@@ -25,7 +25,7 @@
     /* ----- Offices ----- */
     .offices {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 1px;
       background: var(--rule);
       border: 1px solid var(--rule);
@@ -36,7 +36,7 @@
     .office .region { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 14px; }
     .office p { font-size: 13px; line-height: 1.5; color: var(--ink-2); }
     .office .headcount { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.08em; }
-    @media (max-width: 900px) { .offices { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 900px) { .offices { grid-template-columns: 1fr; } }
 
     /* ----- Roles ----- */
     .roles { border: 1px solid var(--rule); background: var(--paper); }
@@ -103,8 +103,8 @@
     <section class="page-hero">
       <div class="container">
         <div class="crumbs">05 / Careers · Offices · Community</div>
-        <h1>Hiring in <em>three continents.</em> Launching a fourth.</h1>
-        <p class="lede">Sigilint is a distributed team from day one: Austin in the US, Bratislava and Almaty in Eastern Europe / Central Asia, and a regional HQ launching in Riyadh in 2026 to partner with Vision 2030 and train engineers out of KSA universities.</p>
+        <h1>Built in <em>Fort Worth.</em> Deployed across the US and the Gulf.</h1>
+        <p class="lede">Sigilint is headquartered in Fort Worth, Texas. We build and field-test here, and we deploy to operators in two markets: the United States and the GCC.</p>
       </div>
     </section>
 
@@ -113,36 +113,29 @@
       <div class="container">
         <div class="section-head">
           <div class="num">05-A</div>
-          <h2>Four locations. One bus.</h2>
+          <h2>One base. Two markets. One bus.</h2>
         </div>
         <div class="offices">
           <div class="office">
-            <div class="code">HQ · AMER</div>
-            <h3>Austin</h3>
+            <div class="code">HQ</div>
+            <h3>Fort Worth</h3>
             <div class="region">Texas · USA</div>
-            <p>Product, hardware, field ops for the Texas well deployment.</p>
-            <div class="headcount">HEADCOUNT: 6 · HIRING 5</div>
+            <p>Product, engineering, hardware, and field ops. Bus, firmware, security, and watch are all built here.</p>
+            <div class="headcount">HIRING</div>
           </div>
           <div class="office">
-            <div class="code">ENG · EMEA</div>
-            <h3>Bratislava</h3>
-            <div class="region">Slovakia</div>
-            <p>Core bus &amp; firmware. Timezone overlap with Gulf operations.</p>
-            <div class="headcount">HEADCOUNT: 4 · HIRING 6</div>
+            <div class="code">MARKET · US</div>
+            <h3>United States</h3>
+            <div class="region">Energy · Industrial · Critical infrastructure</div>
+            <p>Texas well deployment and domestic pilots, run directly out of Fort Worth.</p>
+            <div class="headcount">PILOTS ACTIVE</div>
           </div>
           <div class="office">
-            <div class="code">ENG · CA</div>
-            <h3>Almaty</h3>
-            <div class="region">Kazakhstan</div>
-            <p>Second engineering pod. Sensor integrations, RF.</p>
-            <div class="headcount">HEADCOUNT: 2 · HIRING 4</div>
-          </div>
-          <div class="office">
-            <div class="code">HQ · MENA</div>
-            <h3>Riyadh</h3>
-            <div class="region">KSA · launching 2026</div>
-            <p>Regional HQ. Deployments, training, Vision 2030 partnership.</p>
-            <div class="headcount">HEADCOUNT: 0 · HIRING 10+</div>
+            <div class="code">MARKET · GCC</div>
+            <h3>Gulf</h3>
+            <div class="region">KSA · UAE · GCC</div>
+            <p>Pilot partners and sovereign operators. Served from Fort Worth with field travel.</p>
+            <div class="headcount">BUSINESS DEVELOPMENT</div>
           </div>
         </div>
       </div>
@@ -160,50 +153,43 @@
             <div class="code">ENG-01</div>
             <div><h4>Senior Engineer — DDS / Transport</h4><p>Own the Sigil Bus. QoS profiles, discovery, mesh resilience.</p></div>
             <div></div>
-            <div class="loc">BRATISLAVA · REMOTE</div>
+            <div class="loc">FORT WORTH · REMOTE</div>
             <a href="contact.html?role=ENG-01" class="apply">Apply →</a>
           </div>
           <div class="role">
             <div class="code">ENG-02</div>
             <div><h4>Firmware Engineer — Sigil Node</h4><p>Pi-class Linux + sensor integration. Low-power profiles.</p></div>
             <div></div>
-            <div class="loc">AUSTIN · BRATISLAVA</div>
+            <div class="loc">FORT WORTH</div>
             <a href="contact.html?role=ENG-02" class="apply">Apply →</a>
           </div>
           <div class="role">
             <div class="code">ENG-03</div>
             <div><h4>Native App Engineer — Sigil Watch</h4><p>Desktop-class GUI. Operator-grade UX. C++ / Rust.</p></div>
             <div></div>
-            <div class="loc">AUSTIN · REMOTE</div>
+            <div class="loc">FORT WORTH · REMOTE</div>
             <a href="contact.html?role=ENG-03" class="apply">Apply →</a>
           </div>
           <div class="role">
             <div class="code">ENG-04</div>
             <div><h4>Security Engineer — Sigil-Sec</h4><p>Cryptography, key management, audit. Government-adjacent.</p></div>
             <div></div>
-            <div class="loc">AUSTIN · BRATISLAVA</div>
+            <div class="loc">FORT WORTH</div>
             <a href="contact.html?role=ENG-04" class="apply">Apply →</a>
           </div>
           <div class="role">
             <div class="code">FLD-01</div>
             <div><h4>Field / Deployment Engineer</h4><p>Install, commission, train. Gulf deployments. Travel 60%.</p></div>
             <div></div>
-            <div class="loc">RIYADH · ABU DHABI</div>
+            <div class="loc">FORT WORTH · GCC TRAVEL</div>
             <a href="contact.html?role=FLD-01" class="apply">Apply →</a>
           </div>
           <div class="role">
             <div class="code">BIZ-01</div>
-            <div><h4>Head of MENA — Founding</h4><p>Stand up the Riyadh office. Vision 2030 relationships.</p></div>
+            <div><h4>Head of GCC — Founding</h4><p>Own GCC go-to-market. Vision 2030 and regional operator relationships.</p></div>
             <div></div>
-            <div class="loc">RIYADH</div>
+            <div class="loc">FORT WORTH · GCC TRAVEL</div>
             <a href="contact.html?role=BIZ-01" class="apply">Apply →</a>
-          </div>
-          <div class="role">
-            <div class="code">INT-01</div>
-            <div><h4>Engineering Intern — KSA / universities</h4><p>Structured internship-to-FT for KSA grads. 2026 cohort.</p></div>
-            <div></div>
-            <div class="loc">RIYADH</div>
-            <a href="contact.html?role=INT-01" class="apply">Apply →</a>
           </div>
         </div>
       </div>
@@ -258,11 +244,9 @@
           </thead>
           <tbody>
             <tr><td class="when">MAY 2026</td><td>Hack-TX</td><td class="where">Austin, USA</td><td>Firmware / node engineers</td></tr>
-            <tr><td class="when">JUN 2026</td><td>LEAP 26</td><td class="where">Riyadh, KSA</td><td>Founding Riyadh team</td></tr>
-            <tr><td class="when">JUL 2026</td><td>MakerFaire Prague</td><td class="where">Prague, CZ</td><td>Bratislava-adjacent engineers</td></tr>
+            <tr><td class="when">JUN 2026</td><td>LEAP 26</td><td class="where">Riyadh, KSA</td><td>GCC partners · founding GCC hires</td></tr>
             <tr><td class="when">AUG 2026</td><td>GITEX GLOBAL</td><td class="where">Dubai, UAE</td><td>Pilot partners · gov</td></tr>
             <tr><td class="when">SEP 2026</td><td>ADIPEC</td><td class="where">Abu Dhabi, UAE</td><td>Energy operators</td></tr>
-            <tr><td class="when">OCT 2026</td><td>CyPhyCon</td><td class="where">Almaty, KZ</td><td>CA pod hires</td></tr>
           </tbody>
         </table>
       </div>

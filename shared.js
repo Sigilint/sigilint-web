@@ -73,10 +73,8 @@
         <div>
           <h4>Presence</h4>
           <ul>
-            <li>Austin, TX</li>
-            <li>Bratislava, SK</li>
-            <li>Almaty, KZ</li>
-            <li>Riyadh, KSA (2026)</li>
+            <li>Fort Worth, TX — HQ</li>
+            <li>Markets: US · GCC</li>
           </ul>
         </div>
       </div>
