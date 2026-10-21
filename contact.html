@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Contact</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 20ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+      margin-top: 24px;
+    }
+
+    form {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      padding: 32px;
+    }
+    form .head {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    form .row { margin-bottom: 18px; }
+    form label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 6px;
+    }
+    form input, form select, form textarea {
+      width: 100%;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      font-family: var(--sans);
+      font-size: 14px;
+      color: var(--ink);
+      transition: border-color 0.15s;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+      outline: none;
+      border-color: var(--green);
+    }
+    form textarea { min-height: 120px; resize: vertical; font-family: inherit; }
+    form .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    form .types {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+    form .types button {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 12px;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      color: var(--ink);
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    form .types button.active {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    form .submit-row {
+      margin-top: 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    form .submit-row .note { font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .contact-side {
+      align-self: start;
+    }
+    .contact-side .block {
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 22px;
+      margin-bottom: 16px;
+    }
+    .contact-side .block h4 {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 14px;
+      font-weight: 500;
+    }
+    .contact-side .block .addr {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.9;
+    }
+    .contact-side .block .addr .city { color: var(--green); }
+    .contact-side .block.sigil {
+      background: var(--ink);
+      color: var(--bg);
+      border-color: var(--ink);
+    }
+    .contact-side .block.sigil h4 { color: rgba(245,244,239,0.6); }
+    .contact-side .block.sigil p { color: rgba(245,244,239,0.75); font-size: 13px; line-height: 1.55; }
+    .contact-side .block .email {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--ink);
+      word-break: break-all;
+    }
+    .contact-side .block .email.dark { color: var(--bg); }
+
+    .success-panel {
+      display: none;
+      border: 1px solid var(--green);
+      background: var(--green-soft);
+      padding: 32px;
+    }
+    .success-panel.show { display: block; }
+    .success-panel h3 { font-family: var(--display); font-size: 26px; margin-bottom: 12px; color: var(--green); }
+    .success-panel p { font-size: 14.5px; line-height: 1.55; }
+    .success-panel .ticket {
+      margin-top: 20px;
+      padding: 14px;
+      background: var(--paper);
+      border: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 11.5px;
+      letter-spacing: 0.08em;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      form .row-2 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">07 / Contact</div>
+        <h1>Open a <em>channel.</em></h1>
+        <p class="lede">Pilot partners, investors, candidates, and the press — tell us which and we'll route accordingly. We answer every well-formed inquiry within two business days.</p>
+      </div>
+    </section>
+
+    <section class="section" style="border-top: 1px solid var(--rule);">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <form id="contactForm">
+              <div class="head">
+                <div>FORM · SIGI-CONTACT-v1</div>
+                <div>ENCRYPTED</div>
+              </div>
+
+              <div class="row">
+                <label>Channel</label>
+                <div class="types" id="types">
+                  <button type="button" data-val="pilot" class="active">Pilot</button>
+                  <button type="button" data-val="investor">Investor</button>
+                  <button type="button" data-val="career">Career</button>
+                  <button type="button" data-val="press">Press</button>
+                  <button type="button" data-val="other">Other</button>
+                </div>
+                <input type="hidden" id="channel" value="pilot"/>
+              </div>
+
+              <div class="row row-2">
+                <div>
+                  <label>Name</label>
+                  <input type="text" required placeholder="Full name"/>
+                </div>
+                <div>
+                  <label>Organization</label>
+                  <input type="text" placeholder="Company / institution"/>
+                </div>
+              </div>
+
+              <div class="row row-2">
+                <div>
+                  <label>Email</label>
+                  <input type="email" required placeholder="name@org.com"/>
+                </div>
+                <div>
+                  <label>Region</label>
+                  <select>
+                    <option>GCC / KSA / UAE</option>
+                    <option>North America</option>
+                    <option>Europe</option>
+                    <option>Central Asia</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row">
+                <label>Subject</label>
+                <input type="text" placeholder="One-line summary"/>
+              </div>
+
+              <div class="row">
+                <label>Message</label>
+                <textarea placeholder="Context, site type, timelines, budget envelope if relevant, or links to public material. Anything sensitive — tell us and we will follow up over encrypted channel."></textarea>
+              </div>
+
+              <div class="submit-row">
+                <div class="note">// NDA available on request</div>
+                <button type="submit" class="btn">Transmit <span class="arrow">→</span></button>
+              </div>
+            </form>
+
+            <div class="success-panel" id="success">
+              <h3>Channel opened.</h3>
+              <p>We received your message. A team member will route it to the right desk within two business days. If your inquiry is time-sensitive, please email the address in the right column directly.</p>
+              <div class="ticket">
+                <div>TICKET</div>
+                <div id="ticketId">SIGI-—</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-side">
+            <div class="block sigil">
+              <h4>Direct channel</h4>
+              <p style="margin-bottom: 14px;">For pilot, investor, and government inquiries, skip the form:</p>
+              <div class="email dark">contact@sigilint.io</div>
+            </div>
+            <div class="block">
+              <h4>Operating presence</h4>
+              <div class="addr">
+                <div><span class="city">AUSTIN</span> · USA · HQ</div>
+                <div><span class="city">BRATISLAVA</span> · SK · ENG</div>
+                <div><span class="city">ALMATY</span> · KZ · ENG</div>
+                <div><span class="city">RIYADH</span> · KSA · 2026</div>
+              </div>
+            </div>
+            <div class="block">
+              <h4>Secure comms</h4>
+              <div style="font-family: var(--mono); font-size: 11.5px; line-height: 1.9; color: var(--ink-2);">
+                <div>PGP key on request</div>
+                <div>Signal available for ops</div>
+                <div>ITAR / EAR sensitive matters<br/>over encrypted channel only</div>
+              </div>
+            </div>
+            <div class="block">
+              <h4>For media / press</h4>
+              <div class="email">press@sigilint.io</div>
+              <p style="font-size: 12.5px; color: var(--ink-3); margin-top: 10px;">We are stealth. Expect short, factual answers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+  <script>
+    // types pill
+    const channel = document.getElementById('channel');
+    document.querySelectorAll('#types button').forEach(b => {
+      b.addEventListener('click', () => {
+        document.querySelectorAll('#types button').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        channel.value = b.dataset.val;
+      });
+    });
+
+    // preselect from ?type= or ?role=
+    const params = new URLSearchParams(location.search);
+    const preType = params.get('type');
+    const role = params.get('role');
+    if (preType) {
+      const btn = document.querySelector(`#types button[data-val="${preType}"]`);
+      if (btn) btn.click();
+    } else if (role) {
+      const btn = document.querySelector('#types button[data-val="career"]');
+      if (btn) btn.click();
+      const subject = document.querySelectorAll('form input[type="text"]')[2];
+      if (subject) subject.value = 'Application — ' + role;
+    }
+
+    // submit stub
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      const id = 'SIGI-' + Math.random().toString(36).slice(2, 8).toUpperCase();
+      document.getElementById('ticketId').textContent = id;
+      document.getElementById('contactForm').style.display = 'none';
+      document.getElementById('success').classList.add('show');
+    });
+  </script>
+</body>
+</html>

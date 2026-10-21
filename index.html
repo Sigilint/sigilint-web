@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SIGILINT — Industrial Operations Safety & Security</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="home.css">
+  
+</head>
+<body>
+
+  <main>
+    <!-- ============ HERO (variant-controlled) ============ -->
+    <section id="hero-mount">
+        <section class="hero variant-a">
+          <div class="container">
+            <div class="kicker-row">
+              <span class="tag live">● STEALTH / PRE-SEED</span>
+              <span class="tag">AUSTIN · BRATISLAVA · RIYADH</span>
+              <span class="tag">EST. 2026</span>
+            </div>
+            <h1 class="h-display">Industrial sensing, <em>at the speed of signal.</em></h1>
+            <p class="sub">Sigilint builds a low-latency, high-reliability mesh for moving alerts from sensors, cameras, drones, and humans — into the control room, in under ten milliseconds. Pipelines, refineries, ports, desalination plants, perimeters.</p>
+            <div class="actions">
+              <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
+              <a href="hacks.html" class="btn ghost">Hacks</a>
+            </div>
+            <div class="meta-strip">
+              <div class="item"><div class="k">Bus</div><div class="v">DDS / Mesh</div></div>
+              <div class="item"><div class="k">Latency (P95)</div><div class="v">&lt; 9 ms</div></div>
+              <div class="item"><div class="k">Hardware</div><div class="v">COTS · Pi</div></div>
+              <div class="item"><div class="k">First vertical</div><div class="v">Oil &amp; Gas</div></div>
+            </div>
+          </div>
+        </section></section>
+
+    <!-- ============ PROBLEM ============ -->
+    <section class="problem">
+      <div class="container">
+        <div class="section-label">01 — The Problem</div>
+        <div class="problem-grid">
+          <div class="col-body">
+            Critical infrastructure is instrumented with <em>decades-old SCADA</em>, proprietary radios, and siloed cameras. Alerts arrive minutes late — or not at all.
+          </div>
+          <div class="col-list">
+            <div class="item">
+              <div class="num">01</div>
+              <h3>Latency</h3>
+              <p>Polling-based SCADA loops measured in seconds. Vendor radios bottleneck on a single gateway.</p>
+            </div>
+            <div class="item">
+              <div class="num">02</div>
+              <h3>Fragility</h3>
+              <p>Point-to-point topologies fail silently. A single cut link blinds entire zones of a refinery or pipeline.</p>
+            </div>
+            <div class="item">
+              <div class="num">03</div>
+              <h3>Siloed signals</h3>
+              <p>Cameras, badges, motion sensors, and drones live in separate tools. Humans are left to correlate in real time.</p>
+            </div>
+            <div class="item">
+              <div class="num">04</div>
+              <h3>Cost of hardware</h3>
+              <p>Ruggedized sensors run $3k–$20k per node. Coverage is rationed, not comprehensive.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ THREE PILLARS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">02 — What we build</div>
+        <h2 style="max-width: 22ch; margin-bottom: 48px;">Three layers. One operational picture.</h2>
+        <div class="pillars-grid">
+          <div class="pillar">
+            <svg class="sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><polygon points="12,2 22,7 22,17 12,22 2,17 2,7"></polygon></svg>
+            <div class="num">01 / MESH</div>
+            <h3>Sigil Layer</h3>
+            <p>DDS-based pub/sub message bus over hardened, encrypted Wi-Fi mesh. Sub-10ms delivery across zones. Self-healing. Offline-first.</p>
+          </div>
+          <div class="pillar">
+            <svg class="sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2" y="4" width="20" height="16"></rect><line x1="2" y1="9" x2="22" y2="9"></line></svg>
+            <div class="num">02 / CONTROL</div>
+            <h3>Sigil Watch</h3>
+            <p>Native GUI control center. Real-time sensor and alert feed fused across cameras, badges, drones, and SCADA tags — with a single operator in the loop.</p>
+          </div>
+          <div class="pillar">
+            <svg class="sigil" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="4" y="8" width="16" height="10" rx="1"></rect><circle cx="8" cy="13" r="1.4"></circle><circle cx="16" cy="13" r="1.4"></circle></svg>
+            <div class="num">03 / HARDWARE</div>
+            <h3>Sigil Node</h3>
+            <p>Ruggedized COTS — Raspberry Pi, GoPro, commodity sensors, RFID readers. 10–100× cheaper than incumbent nodes. Identical to what our engineers hack on weekends.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VERTICALS ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">03 — Where we operate</div>
+        <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
+          <h2 style="max-width: 20ch;">Energy, maritime, water — first.</h2>
+          <a href="verticals.html" class="btn ghost">All verticals <span class="arrow">→</span></a>
+        </div>
+        <div class="verticals-preview">
+          <a href="verticals.html#oilgas" class="vertical-mini">
+            <div class="code">V-001 // ENERGY</div>
+            <div>
+              <h3>Oil &amp; Gas</h3>
+              <p style="font-size:12px;color:var(--ink-3);margin-top:6px;">Refineries, pipelines, offshore rigs, wells.</p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+          <a href="verticals.html#maritime" class="vertical-mini">
+            <div class="code">V-002 // MARITIME</div>
+            <div>
+              <h3>Shipping &amp; Ports</h3>
+              <p style="font-size:12px;color:var(--ink-3);margin-top:6px;">Vessel telemetry, marina security, cargo badging.</p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+          <a href="verticals.html#water" class="vertical-mini">
+            <div class="code">V-003 // WATER</div>
+            <div>
+              <h3>Desalination</h3>
+              <p style="font-size:12px;color:var(--ink-3);margin-top:6px;">Flow, chem, uptime — critical to Vision 2030.</p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+          <a href="verticals.html#security" class="vertical-mini">
+            <div class="code">V-004 // SECURITY</div>
+            <div>
+              <h3>Embassies &amp; Bases</h3>
+              <p style="font-size:12px;color:var(--ink-3);margin-top:6px;">Passive + active perimeter. Drones, badges, sensors.</p>
+            </div>
+            <div class="arrow">→</div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ POCs ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">04 — Proof, not slides</div>
+        <div style="display:flex;justify-content:space-between;align-items:end;margin-bottom:32px;flex-wrap:wrap;gap:16px;">
+          <h2 style="max-width: 20ch;">Three live hacks running now.</h2>
+          <a href="hacks.html" class="btn ghost">Field reports <span class="arrow">→</span></a>
+        </div>
+        <div class="poc-strip">
+          <div class="poc-mini">
+            <div class="placeholder">FACTORY FLOOR RIG</div>
+            <div class="code">POC-01 // TABLE-SCALE</div>
+            <h3>Factory Floor Simulation</h3>
+            <p>Scale map + RC car + handheld Pi "drone" + RFID entry. Demonstrates mesh coverage and badge correlation.</p>
+          </div>
+          <div class="poc-mini">
+            <div class="placeholder">GLUG-GLUG SENSOR</div>
+            <div class="code">POC-02 // HYDRO-ANALOG</div>
+            <h3>Flow Carafe</h3>
+            <p>Commodity flow sensor on a water carafe simulating a pipeline segment. Shows end-to-end telemetry pipeline.</p>
+          </div>
+          <div class="poc-mini">
+            <div class="placeholder">TEXAS WELL MONITOR</div>
+            <div class="code">POC-03 // ENV-FIELD</div>
+            <h3>Abandoned Well Array</h3>
+            <p>Methane / H₂S / VOC sensors on abandoned wells in Texas. Liability coverage for mineral lessors, safety for livestock.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA BAND ============ -->
+    <section class="cta-band">
+      <div class="container">
+        <h2>Operators, operators' operators, <em>and the people who solder the box</em>.</h2>
+        <p>We're raising, recruiting, and setting up pilot partners in the Gulf. If you work in industrial safety, sovereign tech, or just want to solder things next weekend — talk to us.</p>
+        <div class="actions">
+          <a href="contact.html?type=pilot" class="btn">Pilot inquiry <span class="arrow">→</span></a>
+          <a href="capital.html" class="btn ghost">Investor brief</a>
+          <a href="careers.html" class="btn ghost">Join us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ Tweaks panel ============ -->
+  <div class="tweaks-panel open" id="tweaks">
+    <h4>// Tweaks</h4>
+    <div class="row">
+      <label>Hero variant</label>
+      <div class="opts" data-key="hero">
+        <button data-val="a" class="active">A — Statement</button>
+        <button data-val="b">B — Terminal</button>
+        <button data-val="c">C — Split</button>
+      </div>
+    </div>
+    <div class="row">
+      <label>Accent</label>
+      <div class="opts" data-key="accent">
+        <button data-val="green" class="active">Green</button>
+        <button data-val="orange">Orange</button>
+        <button data-val="none">None (B/W)</button>
+      </div>
+    </div>
+    <div class="row">
+      <label>Classified strip</label>
+      <div class="opts" data-key="strip">
+        <button data-val="on" class="active">On</button>
+        <button data-val="off">Off</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ============ Defaults block ============
+    const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+      "hero": "a",
+      "accent": "green",
+      "strip": "on"
+    }/*EDITMODE-END*/;
+
+    let state = { ...TWEAK_DEFAULTS };
+
+    // ============ Hero variant renderers ============
+    const heros = {
+      a: () => `
+        <section class="hero variant-a">
+          <div class="container">
+            <div class="kicker-row">
+              <span class="tag live">● STEALTH / PRE-SEED</span>
+              <span class="tag">AUSTIN · BRATISLAVA · RIYADH</span>
+              <span class="tag">EST. 2026</span>
+            </div>
+            <h1 class="h-display">Industrial sensing, <em>at the speed of signal.</em></h1>
+            <p class="sub">Sigilint builds a low-latency, high-reliability mesh for moving alerts from sensors, cameras, drones, and humans — into the control room, in under ten milliseconds. Pipelines, refineries, ports, desalination plants, perimeters.</p>
+            <div class="actions">
+              <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
+              <a href="hacks.html" class="btn ghost">Hacks</a>
+            </div>
+            <div class="meta-strip">
+              <div class="item"><div class="k">Bus</div><div class="v">DDS / Mesh</div></div>
+              <div class="item"><div class="k">Latency (P95)</div><div class="v">&lt; 9 ms</div></div>
+              <div class="item"><div class="k">Hardware</div><div class="v">COTS · Pi</div></div>
+              <div class="item"><div class="k">First vertical</div><div class="v">Oil &amp; Gas</div></div>
+            </div>
+          </div>
+        </section>`,
+      b: () => `
+        <section class="hero variant-b">
+          <div class="container">
+            <div class="kicker-row">
+              <span class="tag live">● NODE.A1 ONLINE</span>
+              <span class="tag">SIGIL-SEC v0.7.2</span>
+              <span class="tag">MESH PEERS: 1,247</span>
+            </div>
+            <h1 class="h-display">Every sensor. <em>Every second.</em><br/>Into one picture.</h1>
+            <p class="sub">Sigilint is a stealth-stage company building the network layer and control center for industrial sensing — over DDS, over hardened mesh, over commodity hardware.</p>
+            <div class="actions">
+              <a href="technology.html" class="btn">&gt; read the stack</a>
+              <a href="hacks.html" class="btn">&gt; hacks</a>
+            </div>
+            <pre class="ascii">  ┌─ sensor.03 ──┐      ┌─ sigil.bus ──┐      ┌─ control ─┐
+  │  RFID GATE   │─────▶│  DDS · MESH  │─────▶│   watch   │
+  └──────────────┘      │   AES-256    │      └───────────┘
+  ┌─ sensor.04 ──┐      │   9ms P95    │            ▲
+  │  CH4 / H2S   │─────▶│              │◀───────────┘
+  └──────────────┘      └──────────────┘        operator</pre>
+            <div class="meta-strip">
+              <div class="item"><div class="k">&gt; bus</div><div class="v">DDS / Mesh</div></div>
+              <div class="item"><div class="k">&gt; latency</div><div class="v">&lt; 9 ms</div></div>
+              <div class="item"><div class="k">&gt; hw</div><div class="v">COTS · Pi</div></div>
+              <div class="item"><div class="k">&gt; status</div><div class="v">STEALTH</div></div>
+            </div>
+          </div>
+        </section>`,
+      c: () => `
+        <section class="hero variant-c">
+          <div class="left">
+            <div class="kicker-row">
+              <span class="tag live">● STEALTH / PRE-SEED</span>
+              <span class="tag">HIRING</span>
+            </div>
+            <h1 class="h-display">A sensing fabric for <em>hard infrastructure.</em></h1>
+            <p class="sub">Low-latency DDS mesh. Native control center. Commodity sensor nodes. Built for refineries, pipelines, ports, and desalination plants — starting in the Gulf.</p>
+            <div class="actions">
+              <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
+              <a href="contact.html" class="btn ghost">Request brief</a>
+            </div>
+            <div class="meta-strip">
+              <div class="item"><div class="k">Bus</div><div class="v">DDS</div></div>
+              <div class="item"><div class="k">Latency</div><div class="v">&lt;9ms</div></div>
+              <div class="item"><div class="k">HW</div><div class="v">Pi</div></div>
+              <div class="item"><div class="k">First ops</div><div class="v">KSA</div></div>
+            </div>
+          </div>
+          <div class="right">
+            <!-- schematic preview illustration -->
+            <svg viewBox="0 0 400 400" width="100%" style="max-width:400px;" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <pattern id="grid-c" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c9c6bc" stroke-width="0.5"/>
+                </pattern>
+              </defs>
+              <rect width="400" height="400" fill="url(#grid-c)"/>
+              <!-- central hub -->
+              <polygon points="200,170 230,185 230,215 200,230 170,215 170,185" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
+              <polygon points="200,180 222,190 222,210 200,220 178,210 178,190" fill="oklch(0.48 0.08 145 / 0.15)" stroke="oklch(0.48 0.08 145)" stroke-width="1"/>
+              <text x="200" y="203" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="oklch(0.48 0.08 145)" font-weight="500">SIGIL</text>
+              <text x="200" y="213" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#555">BUS</text>
+
+              <!-- nodes -->
+              <g stroke="#0a0a0a" stroke-width="1" fill="#fafaf7" font-family="JetBrains Mono" font-size="8">
+                <circle cx="80" cy="80" r="14"/><text x="80" y="83" text-anchor="middle" stroke="none" fill="#0a0a0a">CAM</text>
+                <circle cx="320" cy="80" r="14"/><text x="320" y="83" text-anchor="middle" stroke="none" fill="#0a0a0a">DRN</text>
+                <circle cx="80" cy="320" r="14"/><text x="80" y="323" text-anchor="middle" stroke="none" fill="#0a0a0a">RFID</text>
+                <circle cx="320" cy="320" r="14"/><text x="320" y="323" text-anchor="middle" stroke="none" fill="#0a0a0a">CH4</text>
+                <circle cx="60" cy="200" r="12"/><text x="60" y="203" text-anchor="middle" stroke="none" fill="#0a0a0a">VIB</text>
+                <circle cx="340" cy="200" r="12"/><text x="340" y="203" text-anchor="middle" stroke="none" fill="#0a0a0a">SCD</text>
+              </g>
+
+              <!-- dashed links -->
+              <g stroke="oklch(0.48 0.08 145)" stroke-width="1" fill="none" stroke-dasharray="3 3">
+                <line x1="94" y1="94" x2="178" y2="190"/>
+                <line x1="306" y1="94" x2="222" y2="190"/>
+                <line x1="94" y1="306" x2="178" y2="210"/>
+                <line x1="306" y1="306" x2="222" y2="210"/>
+                <line x1="72" y1="200" x2="170" y2="200"/>
+                <line x1="328" y1="200" x2="230" y2="200"/>
+              </g>
+
+              <!-- corner labels -->
+              <text x="12" y="16" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1">FIG 1.0 / MESH</text>
+              <text x="388" y="16" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1" text-anchor="end">REV 04.26</text>
+              <text x="12" y="392" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1">6 NODES · 1 BUS</text>
+              <text x="388" y="392" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1" text-anchor="end">SIGILINT.IO</text>
+            </svg>
+          </div>
+        </section>`
+    };
+
+    // ============ Apply state ============
+    function applyState() {
+      const mount = document.getElementById('hero-mount');
+      mount.innerHTML = heros[state.hero]();
+
+      // accent
+      const root = document.documentElement;
+      if (state.accent === 'orange') {
+        root.style.setProperty('--green', 'oklch(0.66 0.18 55)');
+        root.style.setProperty('--green-soft', 'oklch(0.66 0.18 55 / 0.15)');
+        root.style.setProperty('--green-line', 'oklch(0.66 0.18 55 / 0.4)');
+      } else if (state.accent === 'none') {
+        root.style.setProperty('--green', '#0a0a0a');
+        root.style.setProperty('--green-soft', '#ebe9e1');
+        root.style.setProperty('--green-line', '#c9c6bc');
+      } else {
+        root.style.setProperty('--green', 'oklch(0.48 0.08 145)');
+        root.style.setProperty('--green-soft', 'oklch(0.48 0.08 145 / 0.12)');
+        root.style.setProperty('--green-line', 'oklch(0.48 0.08 145 / 0.4)');
+      }
+
+      // strip
+      const bar = document.querySelector('.classified-bar');
+      if (bar) bar.style.display = state.strip === 'off' ? 'none' : '';
+
+      // sync panel buttons
+      document.querySelectorAll('.tweaks-panel .opts').forEach(group => {
+        const key = group.dataset.key;
+        group.querySelectorAll('button').forEach(b => {
+          b.classList.toggle('active', b.dataset.val === state[key]);
+        });
+      });
+    }
+
+    // ============ Tweak wiring ============
+    document.querySelectorAll('.tweaks-panel .opts button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.parentElement.dataset.key;
+        state[key] = btn.dataset.val;
+        applyState();
+        window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: btn.dataset.val } }, '*');
+      });
+    });
+
+    window.addEventListener('message', (e) => {
+      if (!e.data) return;
+      if (e.data.type === '__activate_edit_mode') document.getElementById('tweaks').classList.add('open');
+      if (e.data.type === '__deactivate_edit_mode') document.getElementById('tweaks').classList.remove('open');
+    });
+    window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+  </script>
+<script>applyState();</script>
+
+
+  <script src="shared.js"></script>
+</body></html>

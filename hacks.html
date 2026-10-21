@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Hacks</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 20ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+
+    .poc {
+      border-top: 1px solid var(--rule);
+      padding: 72px 0;
+    }
+    .poc-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+    .poc-head .num { font-family: var(--mono); font-size: 14px; color: var(--green); letter-spacing: 0.1em; }
+    .poc-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.6vw, 44px); letter-spacing: -0.02em; margin: 0; }
+    .poc-head .status {
+      font-family: var(--mono); font-size: 10px;
+      padding: 4px 10px; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--green-line);
+      background: var(--green-soft);
+      color: var(--green);
+    }
+    .poc-head .status.building { border-color: var(--rule); background: var(--bg-2); color: var(--ink-3); }
+
+    .poc-body {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+    }
+    .poc-body .copy p { font-size: 15.5px; line-height: 1.6; margin-bottom: 14px; }
+    .poc-body .copy .kvs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 20px;
+    }
+    .poc-body .copy .kv { background: var(--paper); padding: 14px 16px; }
+    .poc-body .copy .kv .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+    .poc-body .copy .kv .v { font-family: var(--display); font-size: 17px; font-weight: 600; }
+
+    .poc-visual {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      overflow: hidden;
+    }
+    .poc-visual .head {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg-2);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .poc-visual .body {
+      aspect-ratio: 4 / 3;
+      background:
+        repeating-linear-gradient(
+          45deg,
+          var(--rule-2),
+          var(--rule-2) 8px,
+          var(--bg-2) 8px,
+          var(--bg-2) 16px
+        );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--ink-3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 24px;
+      text-align: center;
+    }
+    .poc-visual .footer-row {
+      padding: 10px 16px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg-2);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink-3);
+    }
+
+    .telemetry-strip {
+      margin-top: 16px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 14px 18px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      font-family: var(--mono);
+    }
+    .telemetry-strip .item .k { font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+    .telemetry-strip .item .v { font-size: 14px; color: var(--ink); font-weight: 500; }
+    .telemetry-strip .item .v.green { color: var(--green); }
+
+    @media (max-width: 900px) {
+      .poc-head { grid-template-columns: 1fr; gap: 4px; }
+      .poc-body { grid-template-columns: 1fr; gap: 24px; }
+      .telemetry-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">04 / Hacks — Proof, not slides</div>
+        <h1>Three <em>live</em> hacks. Built by the team, on commodity parts.</h1>
+        <p class="lede">Our POCs run in our homes, in a Texas field, and on a table at hackathons. They are deliberately low-fidelity — we optimize for end-to-end signal over demo polish. If it works on a carafe, it works on a pipeline.</p>
+      </div>
+    </section>
+
+    <!-- POC 01 — FACTORY FLOOR -->
+    <section class="poc" id="poc-factory">
+      <div class="container">
+        <div class="poc-head">
+          <div class="num">POC-01</div>
+          <h2>Factory Floor Simulation</h2>
+          <div class="status">● ACTIVE · TABLE-SCALE</div>
+        </div>
+        <div class="poc-body">
+          <div class="copy">
+            <p>A scale map of a factory floor — printed, laid on a folding table, populated with miniature machines. An RC car drives through, tripping badge (RFID) gates and motion sensors. A handheld Raspberry Pi, waved over the map, stands in for a patrol drone.</p>
+            <p>All signals publish to the Sigil Bus. Our laptop Sigil Watch shows the picture operators would see: badge events, motion detections, drone position fused into one timeline.</p>
+            <p>We run this at hackathons and at investor meetings. It fits in a backpack.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Hardware</div><div class="v">RC car · Pi · GoPro</div></div>
+              <div class="kv"><div class="k">Sensors</div><div class="v">RFID · PIR · cam</div></div>
+              <div class="kv"><div class="k">Event→Operator</div><div class="v">~180 ms P95</div></div>
+              <div class="kv"><div class="k">Setup time</div><div class="v">~15 min</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="poc-visual">
+              <div class="head"><div>POC-01 / FAC-SIM</div><div>PHOTO</div></div>
+              <div class="body">[ Photo placeholder ]<br/>Scale map + RC car + Pi on folding table</div>
+              <div class="footer-row"><div>SIGI-POC-01</div><div>HACKATHON-READY</div></div>
+            </div>
+            <div class="telemetry-strip">
+              <div class="item"><div class="k">NODES</div><div class="v">12</div></div>
+              <div class="item"><div class="k">TOPICS</div><div class="v">17</div></div>
+              <div class="item"><div class="k">LATENCY</div><div class="v green">8 ms</div></div>
+              <div class="item"><div class="k">UPTIME</div><div class="v">99.8%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POC 02 — GLUG GLUG -->
+    <section class="poc" id="poc-glug">
+      <div class="container">
+        <div class="poc-head">
+          <div class="num">POC-02</div>
+          <h2>Flow Carafe (“Glug-Glug”)</h2>
+          <div class="status">● ACTIVE · BENCHTOP</div>
+        </div>
+        <div class="poc-body">
+          <div class="copy">
+            <p>The cheapest convincing pipeline analog we could build: a commodity flow sensor on a coffee/water carafe, plus a microphone listening for the “glug-glug” of pouring. Both feed the Sigil Bus as if they were 40-inch pipeline segments.</p>
+            <p>It proves the whole stack — sensor → Pi node → DDS bus → fusion → Sigil Watch alert — on a single bench. We use it to stress-test QoS profiles and mesh recovery.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Hardware</div><div class="v">Flow sensor · mic · Pi</div></div>
+              <div class="kv"><div class="k">Failure mode</div><div class="v">Leak simulated by tipping</div></div>
+              <div class="kv"><div class="k">Alert latency</div><div class="v">~140 ms</div></div>
+              <div class="kv"><div class="k">Cost</div><div class="v">&lt; $50</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="poc-visual">
+              <div class="head"><div>POC-02 / GLUG</div><div>DIAGRAM</div></div>
+              <div class="body">
+                <svg viewBox="0 0 360 270" width="100%" style="max-width:360px;">
+                  <defs>
+                    <pattern id="g-g" width="16" height="16" patternUnits="userSpaceOnUse">
+                      <path d="M 16 0 L 0 0 0 16" fill="none" stroke="#d9d6cc" stroke-width="0.5"/>
+                    </pattern>
+                  </defs>
+                  <rect width="360" height="270" fill="url(#g-g)"/>
+                  <!-- carafe -->
+                  <path d="M 90 60 L 150 60 L 155 70 L 165 220 L 75 220 L 85 70 Z" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1.5"/>
+                  <path d="M 150 90 Q 180 100 175 130 Q 170 140 155 135" fill="none" stroke="#0a0a0a" stroke-width="1.2"/>
+                  <line x1="90" y1="140" x2="150" y2="140" stroke="oklch(0.48 0.08 145)" stroke-width="1" stroke-dasharray="2 2"/>
+                  <text x="120" y="136" font-family="JetBrains Mono" font-size="8" fill="oklch(0.48 0.08 145)" text-anchor="middle">H₂O</text>
+                  <!-- flow sensor -->
+                  <rect x="180" y="200" width="40" height="24" fill="oklch(0.48 0.08 145 / 0.15)" stroke="oklch(0.48 0.08 145)"/>
+                  <text x="200" y="215" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#0a0a0a">FLOW</text>
+                  <line x1="165" y1="215" x2="180" y2="212" stroke="#0a0a0a"/>
+                  <!-- mic -->
+                  <circle cx="250" cy="140" r="12" fill="#fafaf7" stroke="#0a0a0a"/>
+                  <text x="250" y="143" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#0a0a0a">MIC</text>
+                  <!-- pi -->
+                  <rect x="280" y="180" width="60" height="40" fill="#fafaf7" stroke="#0a0a0a"/>
+                  <text x="310" y="200" text-anchor="middle" font-family="Space Grotesk" font-size="10" font-weight="600" fill="#0a0a0a">Pi Node</text>
+                  <text x="310" y="213" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="#555">sigil-bus</text>
+                  <!-- arrows -->
+                  <g stroke="#0a0a0a" stroke-width="1" fill="none" marker-end="url(#a)">
+                    <defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M 0 0 L 8 4 L 0 8 z" fill="#0a0a0a"/></marker></defs>
+                    <line x1="220" y1="212" x2="278" y2="208"/>
+                    <line x1="262" y1="140" x2="298" y2="180"/>
+                  </g>
+                  <text x="10" y="18" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1">FIG POC-02 / GLUG</text>
+                </svg>
+              </div>
+              <div class="footer-row"><div>SIGI-POC-02</div><div>ALWAYS-ON</div></div>
+            </div>
+            <div class="telemetry-strip">
+              <div class="item"><div class="k">SENSORS</div><div class="v">2</div></div>
+              <div class="item"><div class="k">RATE</div><div class="v">100 Hz</div></div>
+              <div class="item"><div class="k">LEAK DETECT</div><div class="v green">140 ms</div></div>
+              <div class="item"><div class="k">BUDGET</div><div class="v">$47</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- POC 03 — METHANE WELLS -->
+    <section class="poc" id="poc-methane">
+      <div class="container">
+        <div class="poc-head">
+          <div class="num">POC-03</div>
+          <h2>Abandoned Well Monitor — Texas</h2>
+          <div class="status">● ACTIVE · FIELD-DEPLOYED</div>
+        </div>
+        <div class="poc-body">
+          <div class="copy">
+            <p>Tens of thousands of abandoned and orphan wells leak methane, H₂S, and worse across Texas — a hazard to livestock, a liability for the mineral lessor, and a regulatory exposure for the operator of record.</p>
+            <p>Our first outdoor deployment: solar-powered Sigil Nodes on a handful of abandoned wells on private land, publishing CH₄ / H₂S / VOC every few seconds. Data is available to the land-owner and their insurer. We treat it as a liability-reduction product first, environmental product second.</p>
+            <p>This is also our first paying pilot structure — fixed-fee, six-month engagement.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Location</div><div class="v">Permian / Eagle Ford</div></div>
+              <div class="kv"><div class="k">Nodes deployed</div><div class="v">6 · expanding</div></div>
+              <div class="kv"><div class="k">Power</div><div class="v">Solar · 12 V</div></div>
+              <div class="kv"><div class="k">Backhaul</div><div class="v">LTE + sat fallback</div></div>
+            </div>
+          </div>
+          <div>
+            <div class="poc-visual">
+              <div class="head"><div>POC-03 / WELL-FIELD</div><div>PLAN</div></div>
+              <div class="body">[ Field photo placeholder ]<br/>Solar node on orphaned wellhead</div>
+              <div class="footer-row"><div>SIGI-POC-03</div><div>DEPLOYED</div></div>
+            </div>
+            <div class="telemetry-strip">
+              <div class="item"><div class="k">WELLS</div><div class="v">6</div></div>
+              <div class="item"><div class="k">GAS MODS</div><div class="v">CH₄ · H₂S · VOC</div></div>
+              <div class="item"><div class="k">SAMPLE</div><div class="v">Δ 5 s</div></div>
+              <div class="item"><div class="k">UPTIME</div><div class="v green">99.3%</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HACKATHONS CALL -->
+    <section class="section" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-label">05 — Come build with us</div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 48px; align-items: start;">
+          <div>
+            <h2 style="max-width:22ch;">Hackathons &amp; maker conventions.</h2>
+            <p style="margin-top: 16px; font-size: 16px; line-height: 1.55;">We recruit in the open. If you want to solder a node, fly a drone, or help us stand up a mesh in a parking lot — come find the Sigilint table. We ship swag (the dragon sticker), snacks, and Raspberry Pis.</p>
+            <div style="margin-top: 24px;">
+              <a href="careers.html#hackathons" class="btn">See the schedule →</a>
+            </div>
+          </div>
+          <div style="border: 1px solid var(--rule); background: var(--paper); padding: 20px;">
+            <div style="font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 14px;">Upcoming</div>
+            <div style="font-family: var(--mono); font-size: 12.5px; line-height: 1.9;">
+              <div>MAY · Hack-TX / Austin</div>
+              <div>JUN · LEAP 26 / Riyadh</div>
+              <div>JUL · MakerFaire Prague</div>
+              <div>AUG · GITEX / Dubai</div>
+              <div>SEP · ADIPEC / Abu Dhabi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

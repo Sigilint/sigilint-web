@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Verticals &amp; Use Cases</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 22ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+
+    .vertical {
+      border-top: 1px solid var(--rule);
+      padding: 64px 0;
+    }
+    .vertical-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+    .vertical-head .num {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--green);
+      letter-spacing: 0.1em;
+    }
+    .vertical-head h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(32px, 4vw, 48px);
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .vertical-head .tag {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--ink-3);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .vertical-body {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+    }
+
+    .vertical-body .copy p {
+      font-size: 15.5px;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+    .vertical-body .copy .kvs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 20px;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .vertical-body .copy .kv {
+      background: var(--paper);
+      padding: 16px;
+    }
+    .vertical-body .copy .kv .k {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 4px;
+    }
+    .vertical-body .copy .kv .v {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .vertical-body .side {
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      padding: 24px;
+    }
+    .vertical-body .side h4 {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .vertical-body .side ul {
+      list-style: none;
+      padding: 0;
+    }
+    .vertical-body .side ul li {
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--rule);
+      font-size: 13.5px;
+      display: flex;
+      gap: 10px;
+      align-items: start;
+    }
+    .vertical-body .side ul li:last-child { border-bottom: none; }
+    .vertical-body .side ul li::before {
+      content: '';
+      display: inline-block;
+      width: 8px; height: 8px;
+      margin-top: 6px;
+      clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .vertical-head { grid-template-columns: 1fr; gap: 4px; }
+      .vertical-body { grid-template-columns: 1fr; gap: 24px; }
+      .vertical-body .copy .kvs { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">03 / Verticals — Where Sigilint deploys</div>
+        <h1>Hard infrastructure, <em>hard environments.</em></h1>
+        <p class="lede">Sigilint is opinionated: we start with verticals where latency, reliability, and environmental cost dominate the P&amp;L — and where incumbents still sell 2012 hardware at 2032 prices. We deploy first in the Gulf and Texas.</p>
+      </div>
+    </section>
+
+    <!-- OIL & GAS -->
+    <section class="vertical" id="oilgas">
+      <div class="container">
+        <div class="vertical-head">
+          <div class="num">V-001</div>
+          <h2>Oil &amp; Gas</h2>
+          <div class="tag">Refineries · Pipelines · Offshore · Wells</div>
+        </div>
+        <div class="vertical-body">
+          <div class="copy">
+            <p>The largest, most-instrumented — and most-fragmented — industrial vertical on earth. A single refinery runs three SCADA vendors, four camera silos, six radio brands. Operators correlate by hand.</p>
+            <p>Sigilint unifies sensing under one bus. Pipeline leak detection over distributed acoustic sensing (DAS). Refinery perimeter and badge correlation. Abandoned-well methane monitoring as a liability product for mineral lessors.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">First POC live</div><div class="v">Texas / TX-wells</div></div>
+              <div class="kv"><div class="k">Pilot target</div><div class="v">Aramco mid-stream</div></div>
+              <div class="kv"><div class="k">Per-km cost</div><div class="v">~$3k all-in</div></div>
+              <div class="kv"><div class="k">Leak detect P95</div><div class="v">&lt; 1.5 s</div></div>
+            </div>
+          </div>
+          <div class="side">
+            <h4>Primary use cases</h4>
+            <ul>
+              <li>Pipeline intrusion &amp; leak — DAS + pressure + drone patrol</li>
+              <li>Refinery perimeter + badge fusion</li>
+              <li>Offshore rig safety — gas, vibration, muster</li>
+              <li>Abandoned well methane monitoring (Texas)</li>
+              <li>SCADA tag bridge for legacy PLC integration</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MARITIME -->
+    <section class="vertical" id="maritime">
+      <div class="container">
+        <div class="vertical-head">
+          <div class="num">V-002</div>
+          <h2>Maritime &amp; Ports</h2>
+          <div class="tag">Shipping · Marinas · Cargo · Coast</div>
+        </div>
+        <div class="vertical-body">
+          <div class="copy">
+            <p>Ports are multi-tenant, multi-jurisdiction environments with partial connectivity, saltwater corrosion, and adversarial incentives. The existing stack is AIS + cameras + walkie-talkies.</p>
+            <p>Sigilint lays a resilient mesh across the quay, cranes, and vessels themselves — with cargo RFID, drone patrol, and vessel telemetry arriving in the same operator picture.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Target region</div><div class="v">Red Sea / Gulf</div></div>
+              <div class="kv"><div class="k">Node rating</div><div class="v">IP67 marine</div></div>
+              <div class="kv"><div class="k">Mesh span</div><div class="v">Quay + anchorage</div></div>
+              <div class="kv"><div class="k">Integration</div><div class="v">AIS · VTS · SCADA</div></div>
+            </div>
+          </div>
+          <div class="side">
+            <h4>Primary use cases</h4>
+            <ul>
+              <li>Container RFID &amp; chain-of-custody</li>
+              <li>Quay-side crane health + vibration</li>
+              <li>Marina perimeter + boat-ID correlation</li>
+              <li>Vessel telemetry during port handoff</li>
+              <li>Drone-based coastal patrol</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WATER -->
+    <section class="vertical" id="water">
+      <div class="container">
+        <div class="vertical-head">
+          <div class="num">V-003</div>
+          <h2>Water &amp; Desalination</h2>
+          <div class="tag">Desalination · Treatment · Distribution</div>
+        </div>
+        <div class="vertical-body">
+          <div class="copy">
+            <p>Desalination is the Gulf's single most strategic infrastructure after hydrocarbons. A membrane hall going down is a national-scale incident. Yet most plants are instrumented with ~10-year-old Siemens/Schneider HMIs.</p>
+            <p>Sigilint ships a non-invasive overlay: flow, chem, and vibration telemetry plus perimeter + badging, bridged to the existing SCADA. No rip-and-replace.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Aligned with</div><div class="v">Vision 2030</div></div>
+              <div class="kv"><div class="k">Pilot target</div><div class="v">SWCC / ACWA</div></div>
+              <div class="kv"><div class="k">Deploy type</div><div class="v">Overlay, non-invasive</div></div>
+              <div class="kv"><div class="k">Chem sampling</div><div class="v">Cl · σ · turbidity</div></div>
+            </div>
+          </div>
+          <div class="side">
+            <h4>Primary use cases</h4>
+            <ul>
+              <li>Membrane health — pressure &amp; vibration trends</li>
+              <li>Chem dosing &amp; distribution water quality</li>
+              <li>Plant perimeter + badge ingress</li>
+              <li>Environmental runoff + thermal imaging</li>
+              <li>Legacy SCADA tag bridge</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECURITY -->
+    <section class="vertical" id="security">
+      <div class="container">
+        <div class="vertical-head">
+          <div class="num">V-004</div>
+          <h2>Perimeter &amp; Sovereign</h2>
+          <div class="tag">Embassies · Bases · Ministries</div>
+        </div>
+        <div class="vertical-body">
+          <div class="copy">
+            <p>Where physical and digital security converge: passive sensing across doors, motion, electrical, and plumbing; active coverage from cameras, drones, and personnel — on an auditable, sovereign stack.</p>
+            <p>Sigilint is deployable inside ITAR/EAR-sensitive environments. Encryption is auditable. The fabric runs without public cloud dependency.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Sovereignty</div><div class="v">Air-gap capable</div></div>
+              <div class="kv"><div class="k">Encryption</div><div class="v">AES-256 E2E</div></div>
+              <div class="kv"><div class="k">Audit</div><div class="v">Source-available</div></div>
+              <div class="kv"><div class="k">Profile</div><div class="v">Passive + active</div></div>
+            </div>
+          </div>
+          <div class="side">
+            <h4>Primary use cases</h4>
+            <ul>
+              <li>Embassy + ministry perimeter</li>
+              <li>Forward operating base sensing</li>
+              <li>Corporate campus + executive protection</li>
+              <li>Data center physical layer</li>
+              <li>Event &amp; summit temporary coverage</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOSPITALITY -->
+    <section class="vertical" id="hospitality">
+      <div class="container">
+        <div class="vertical-head">
+          <div class="num">V-005</div>
+          <h2>Hospitality &amp; Resort</h2>
+          <div class="tag">Hotels · Resorts · Grounds · Airlines</div>
+        </div>
+        <div class="vertical-body">
+          <div class="copy">
+            <p>An unexpected fit: large hospitality assets already treat themselves like industrial sites. The Red Sea giga-projects, Neom, and five-star Gulf resorts need sensor meshes for operations and grounds security alike.</p>
+            <p>Sigilint covers room state (cleaning, maintenance, minibar RFID), grounds perimeter, environmental comfort, and staff coordination — under the same bus that runs the safety layer.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Target</div><div class="v">Gulf resorts</div></div>
+              <div class="kv"><div class="k">Modality</div><div class="v">Ops + safety</div></div>
+              <div class="kv"><div class="k">Guest layer</div><div class="v">Opt-in only</div></div>
+              <div class="kv"><div class="k">Integration</div><div class="v">PMS · BMS</div></div>
+            </div>
+          </div>
+          <div class="side">
+            <h4>Primary use cases</h4>
+            <ul>
+              <li>Room state — clean · repair · minibar</li>
+              <li>Grounds perimeter + wildlife deterrence</li>
+              <li>Staff task coordination &amp; dispatch</li>
+              <li>HVAC / BMS fault detection</li>
+              <li>Airline ground ops — ramp tracking</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" style="border-top: 1px solid var(--ink); padding: 80px 0; background: var(--ink); color: var(--bg);">
+      <div class="container">
+        <h2 style="color: var(--bg); max-width: 22ch; font-size: clamp(28px, 3.8vw, 48px);">See a vertical that <em style="color: oklch(0.7 0.12 145); font-style: normal;">matches</em> your site?</h2>
+        <p style="color: rgba(245,244,239,0.7); max-width: 52ch; margin-top: 16px;">Our pilot engagements are small — six months, bounded scope, fixed cost. Start a conversation.</p>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="contact.html?type=pilot" class="btn" style="background: var(--bg); color: var(--ink); border-color: var(--bg);">Pilot inquiry →</a>
+          <a href="hacks.html" class="btn ghost" style="border-color: rgba(245,244,239,0.3); color: var(--bg);">See the hacks</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

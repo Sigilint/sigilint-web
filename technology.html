@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Technology</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero {
+      padding: 72px 0 48px;
+    }
+    .page-hero .crumbs {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 20px;
+    }
+    .page-hero h1 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+      max-width: 18ch;
+    }
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--green);
+    }
+    .page-hero .lede {
+      max-width: 60ch;
+      margin-top: 24px;
+      font-size: 17px;
+      line-height: 1.55;
+    }
+
+    /* ============ Stack diagram ============ */
+    .stack-wrap {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      padding: 32px;
+      position: relative;
+    }
+    .stack-wrap .corners {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      margin-bottom: 24px;
+    }
+    .stack-layers {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .stack-layer {
+      background: var(--paper);
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .stack-layer.hdr {
+      background: var(--bg-2);
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      padding: 10px 24px;
+    }
+    .stack-layer .name {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 17px;
+    }
+    .stack-layer .code {
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--ink-3);
+      letter-spacing: 0.1em;
+    }
+    .stack-layer .boxes {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .stack-layer .box {
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 6px 10px;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+    }
+    .stack-layer .box.accent {
+      border-color: var(--green-line);
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    /* ============ Info flow diagram ============ */
+    .flow-wrap {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .flow-head {
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--bg-2);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .flow-body {
+      padding: 48px 32px;
+      position: relative;
+      background-image:
+        linear-gradient(var(--rule-2) 1px, transparent 1px),
+        linear-gradient(90deg, var(--rule-2) 1px, transparent 1px);
+      background-size: 32px 32px;
+      min-height: 480px;
+    }
+    .flow-legend {
+      display: flex;
+      gap: 20px;
+      padding: 14px 24px;
+      border-top: 1px solid var(--rule);
+      background: var(--bg-2);
+      font-family: var(--mono);
+      font-size: 10.5px;
+      color: var(--ink-3);
+      letter-spacing: 0.04em;
+      flex-wrap: wrap;
+    }
+    .flow-legend .swatch {
+      display: inline-block;
+      width: 14px; height: 2px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
+
+    /* ============ Specs table ============ */
+    .spec-table {
+      width: 100%;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      border-collapse: collapse;
+    }
+    .spec-table th, .spec-table td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid var(--rule);
+      font-size: 13.5px;
+    }
+    .spec-table th {
+      font-family: var(--mono);
+      font-size: 10.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+      font-weight: 500;
+      background: var(--bg-2);
+    }
+    .spec-table td.metric {
+      font-family: var(--mono);
+      color: var(--ink);
+      font-weight: 500;
+    }
+    .spec-table td.vs {
+      color: var(--ink-3);
+      text-decoration: line-through;
+      font-family: var(--mono);
+    }
+    .spec-table tr:last-child td { border-bottom: none; }
+
+    /* ============ Why us ============ */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .why-grid .cell {
+      background: var(--paper);
+      padding: 28px;
+    }
+    .why-grid .cell .num {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 0.12em;
+      margin-bottom: 14px;
+    }
+    .why-grid .cell h3 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .why-grid .cell p { font-size: 13.5px; line-height: 1.55; }
+
+    @media (max-width: 900px) {
+      .stack-layers { grid-template-columns: 1fr; }
+      .why-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">01 / Technology — The Stack</div>
+        <h1>A <em>mesh-first</em> sensing fabric, soldered together from first principles.</h1>
+        <p class="lede">Sigilint is three layers: a DDS-based message bus over encrypted Wi-Fi mesh, a native control application, and ruggedized COTS hardware. Every layer is designed so a single operator — or a single commodity node — can be removed without the system degrading.</p>
+      </div>
+    </section>
+
+    <!-- STACK DIAGRAM -->
+    <section class="section" style="border-top:1px solid var(--rule);">
+      <div class="container">
+        <div class="section-label">02 — The Stack</div>
+        <div class="stack-wrap">
+          <div class="corners">
+            <div>FIG 2.0 / LAYER DECOMPOSITION</div>
+            <div>SIGI-STK-v0.7</div>
+          </div>
+          <div class="stack-layers">
+            <div class="stack-layer hdr"><span>Layer</span></div>
+            <div class="stack-layer hdr"><span>Components</span></div>
+
+            <div class="stack-layer">
+              <div>
+                <div class="name">Sigil Watch</div>
+                <div class="code">L05 · UX / OPS</div>
+              </div>
+            </div>
+            <div class="stack-layer">
+              <div class="boxes">
+                <span class="box accent">Native GUI</span>
+                <span class="box">Alert inbox</span>
+                <span class="box">Sensor map</span>
+                <span class="box">Camera grid</span>
+                <span class="box">Badge log</span>
+                <span class="box">Drone tasking</span>
+              </div>
+            </div>
+
+            <div class="stack-layer">
+              <div>
+                <div class="name">Fusion &amp; Rules</div>
+                <div class="code">L04 · LOGIC</div>
+              </div>
+            </div>
+            <div class="stack-layer">
+              <div class="boxes">
+                <span class="box">Zone rules</span>
+                <span class="box">Cross-sensor correlation</span>
+                <span class="box">ML anomaly hooks</span>
+                <span class="box">SCADA tag bridge</span>
+              </div>
+            </div>
+
+            <div class="stack-layer">
+              <div>
+                <div class="name">Sigil Bus</div>
+                <div class="code">L03 · TRANSPORT</div>
+              </div>
+            </div>
+            <div class="stack-layer">
+              <div class="boxes">
+                <span class="box accent">DDS pub/sub</span>
+                <span class="box accent">AES-256 / Sigil-Sec</span>
+                <span class="box">QoS profiles</span>
+                <span class="box">Topic discovery</span>
+              </div>
+            </div>
+
+            <div class="stack-layer">
+              <div>
+                <div class="name">Mesh Fabric</div>
+                <div class="code">L02 · LINK</div>
+              </div>
+            </div>
+            <div class="stack-layer">
+              <div class="boxes">
+                <span class="box accent">Hardened Wi-Fi mesh</span>
+                <span class="box">802.11s / custom</span>
+                <span class="box">Self-healing</span>
+                <span class="box">LTE / sat failover</span>
+              </div>
+            </div>
+
+            <div class="stack-layer">
+              <div>
+                <div class="name">Sigil Node</div>
+                <div class="code">L01 · HARDWARE</div>
+              </div>
+            </div>
+            <div class="stack-layer">
+              <div class="boxes">
+                <span class="box">Raspberry Pi</span>
+                <span class="box">GoPro / IP cam</span>
+                <span class="box">RFID reader</span>
+                <span class="box">CH4 / H₂S / VOC</span>
+                <span class="box">Vibration / motion</span>
+                <span class="box">Drone / robot</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFO FLOW DIAGRAM -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">03 — Information Flow</div>
+        <h2 style="max-width: 22ch; margin-bottom: 24px;">From physical event to operator action in &lt;250ms.</h2>
+        <p style="margin-bottom: 32px;">Every signal flows through the same fabric — whether it originates from a badge, a camera frame, a methane spike, or a human radio call. Hover any node to see what it publishes.</p>
+
+        <div class="flow-wrap">
+          <div class="flow-head">
+            <div>FIG 3.0 / INFO FLOW · EVENT → OPERATOR</div>
+            <div>T+0 ··· T+250ms</div>
+          </div>
+          <div class="flow-body">
+            <svg viewBox="0 0 1200 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+              <defs>
+                <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#0a0a0a"/>
+                </marker>
+                <marker id="arrow-g" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="oklch(0.48 0.08 145)"/>
+                </marker>
+              </defs>
+
+              <!-- column headers -->
+              <g font-family="JetBrains Mono" font-size="11" fill="#8a8a85" letter-spacing="2" text-transform="uppercase">
+                <text x="140" y="30">① PHYSICAL</text>
+                <text x="400" y="30">② NODE</text>
+                <text x="660" y="30">③ BUS</text>
+                <text x="920" y="30">④ OPERATOR</text>
+              </g>
+              <g stroke="#d9d6cc" stroke-dasharray="2 4">
+                <line x1="280" y1="50" x2="280" y2="440"/>
+                <line x1="540" y1="50" x2="540" y2="440"/>
+                <line x1="800" y1="50" x2="800" y2="440"/>
+              </g>
+
+              <!-- physical sources (col 1) -->
+              <g class="flow-node" data-topic="physical/badge/ingress">
+                <rect x="40" y="70" width="200" height="48" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1"/>
+                <text x="140" y="92" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="600" fill="#0a0a0a">Badge swipe</text>
+                <text x="140" y="108" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">RFID / HID</text>
+              </g>
+              <g class="flow-node">
+                <rect x="40" y="138" width="200" height="48" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1"/>
+                <text x="140" y="160" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="600" fill="#0a0a0a">Camera frame</text>
+                <text x="140" y="176" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">IP / GoPro</text>
+              </g>
+              <g class="flow-node">
+                <rect x="40" y="206" width="200" height="48" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1"/>
+                <text x="140" y="228" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="600" fill="#0a0a0a">Gas / chem spike</text>
+                <text x="140" y="244" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">CH₄ · H₂S · VOC</text>
+              </g>
+              <g class="flow-node">
+                <rect x="40" y="274" width="200" height="48" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1"/>
+                <text x="140" y="296" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="600" fill="#0a0a0a">Motion / vibration</text>
+                <text x="140" y="312" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">PIR · accel</text>
+              </g>
+              <g class="flow-node">
+                <rect x="40" y="342" width="200" height="48" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1"/>
+                <text x="140" y="364" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="600" fill="#0a0a0a">Drone / human</text>
+                <text x="140" y="380" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">GPS · radio</text>
+              </g>
+
+              <!-- node processing (col 2) -->
+              <g>
+                <rect x="310" y="138" width="200" height="180" fill="oklch(0.48 0.08 145 / 0.06)" stroke="oklch(0.48 0.08 145)" stroke-width="1"/>
+                <text x="410" y="162" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#0a0a0a">Sigil Node</text>
+                <text x="410" y="178" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">Raspberry Pi · COTS</text>
+                <line x1="330" y1="190" x2="490" y2="190" stroke="#c9c6bc"/>
+                <text x="410" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="10.5" fill="#0a0a0a">· capture</text>
+                <text x="410" y="226" text-anchor="middle" font-family="JetBrains Mono" font-size="10.5" fill="#0a0a0a">· timestamp</text>
+                <text x="410" y="244" text-anchor="middle" font-family="JetBrains Mono" font-size="10.5" fill="#0a0a0a">· encrypt (AES-256)</text>
+                <text x="410" y="262" text-anchor="middle" font-family="JetBrains Mono" font-size="10.5" fill="#0a0a0a">· publish to topic</text>
+                <text x="410" y="294" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="oklch(0.48 0.08 145)" letter-spacing="1">T + 2ms</text>
+              </g>
+
+              <!-- bus (col 3) -->
+              <g>
+                <polygon points="660,130 720,130 750,180 720,230 660,230 630,180" fill="oklch(0.48 0.08 145 / 0.08)" stroke="oklch(0.48 0.08 145)" stroke-width="1.5"/>
+                <text x="690" y="175" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#0a0a0a">SIGIL BUS</text>
+                <text x="690" y="192" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">DDS / MESH</text>
+                <text x="690" y="208" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="oklch(0.48 0.08 145)">9ms P95</text>
+              </g>
+
+              <!-- fusion block (col 3 lower) -->
+              <g>
+                <rect x="610" y="260" width="160" height="72" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1"/>
+                <text x="690" y="284" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="600" fill="#0a0a0a">Fusion &amp; rules</text>
+                <text x="690" y="300" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">correlate · score</text>
+                <text x="690" y="320" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="oklch(0.48 0.08 145)" letter-spacing="1">T + 40ms</text>
+              </g>
+
+              <!-- operator (col 4) -->
+              <g>
+                <rect x="880" y="138" width="240" height="180" fill="#fafaf7" stroke="#0a0a0a" stroke-width="1.5"/>
+                <text x="1000" y="162" text-anchor="middle" font-family="Space Grotesk" font-size="14" font-weight="700" fill="#0a0a0a">Sigil Watch</text>
+                <text x="1000" y="178" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#555">operator console</text>
+                <line x1="900" y1="190" x2="1100" y2="190" stroke="#c9c6bc"/>
+                <rect x="900" y="204" width="90" height="50" fill="#ebe9e1" stroke="#c9c6bc"/>
+                <text x="945" y="234" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0a0a0a">ALERT</text>
+                <rect x="1000" y="204" width="90" height="50" fill="#ebe9e1" stroke="#c9c6bc"/>
+                <text x="1045" y="234" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0a0a0a">MAP</text>
+                <rect x="900" y="262" width="190" height="44" fill="oklch(0.66 0.18 55 / 0.15)" stroke="oklch(0.66 0.18 55)"/>
+                <text x="995" y="286" text-anchor="middle" font-family="JetBrains Mono" font-size="10" fill="#0a0a0a">OPERATOR ACTION</text>
+                <text x="1000" y="325" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="oklch(0.48 0.08 145)" letter-spacing="1">T + 250ms</text>
+              </g>
+
+              <!-- Event summary along bottom -->
+              <g>
+                <rect x="310" y="342" width="500" height="60" fill="#ebe9e1" stroke="#c9c6bc" stroke-dasharray="3 3"/>
+                <text x="560" y="366" text-anchor="middle" font-family="JetBrains Mono" font-size="11" fill="#555" letter-spacing="2">EXAMPLE EVENT</text>
+                <text x="560" y="388" text-anchor="middle" font-family="Space Grotesk" font-size="13" font-weight="500" fill="#0a0a0a">
+                  Unbadged entry + CH₄ spike + vibration in Zone B → dispatch drone, alert supervisor
+                </text>
+              </g>
+
+              <!-- arrows: physical → node -->
+              <g stroke="#0a0a0a" stroke-width="1" fill="none" marker-end="url(#arrow)">
+                <line x1="240" y1="94" x2="308" y2="180"/>
+                <line x1="240" y1="162" x2="308" y2="200"/>
+                <line x1="240" y1="230" x2="308" y2="230"/>
+                <line x1="240" y1="298" x2="308" y2="258"/>
+                <line x1="240" y1="366" x2="308" y2="282"/>
+              </g>
+              <!-- arrows: node → bus -->
+              <g stroke="oklch(0.48 0.08 145)" stroke-width="1.5" fill="none" marker-end="url(#arrow-g)">
+                <line x1="510" y1="228" x2="628" y2="180"/>
+              </g>
+              <!-- arrows: bus → fusion -->
+              <g stroke="#0a0a0a" stroke-width="1" fill="none" marker-end="url(#arrow)">
+                <line x1="690" y1="230" x2="690" y2="258"/>
+              </g>
+              <!-- fusion → operator -->
+              <g stroke="oklch(0.48 0.08 145)" stroke-width="1.5" fill="none" marker-end="url(#arrow-g)">
+                <line x1="770" y1="296" x2="878" y2="230"/>
+              </g>
+              <!-- bus → operator direct (telemetry stream) -->
+              <g stroke="#0a0a0a" stroke-width="1" stroke-dasharray="4 3" fill="none" marker-end="url(#arrow)">
+                <line x1="750" y1="180" x2="878" y2="180"/>
+              </g>
+              <!-- operator → bus (command) -->
+              <g stroke="oklch(0.66 0.18 55)" stroke-width="1.2" fill="none" marker-end="url(#arrow)" stroke-dasharray="5 3">
+                <path d="M 880 270 Q 820 270 750 220"/>
+              </g>
+            </svg>
+          </div>
+          <div class="flow-legend">
+            <span><span class="swatch" style="background:#0a0a0a"></span>Telemetry</span>
+            <span><span class="swatch" style="background:oklch(0.48 0.08 145)"></span>Encrypted pub/sub</span>
+            <span><span class="swatch" style="background:oklch(0.66 0.18 55)"></span>Operator command</span>
+            <span style="margin-left:auto;">Timings: T+0 event · T+2ms node · T+9ms bus · T+40ms fusion · T+250ms operator</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECS VS INCUMBENT -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">04 — Benchmark</div>
+        <h2 style="max-width:22ch;margin-bottom:24px;">Sigilint vs. incumbent SCADA radio.</h2>
+        <p style="margin-bottom:32px;">All numbers reflect our current lab + field POC measurements. Incumbent baseline is an anonymized Tier-1 industrial SCADA radio + HMI stack in service on a Gulf refinery.</p>
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Sigilint</th>
+              <th>Incumbent</th>
+              <th>Delta</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Event → operator (P95)</td>
+              <td class="metric">&lt; 250 ms</td>
+              <td class="vs">~4,200 ms</td>
+              <td class="metric" style="color:var(--green)">17× faster</td>
+            </tr>
+            <tr>
+              <td>Mesh recovery from link cut</td>
+              <td class="metric">&lt; 1.5 s</td>
+              <td class="vs">manual / N/A</td>
+              <td class="metric" style="color:var(--green)">self-healing</td>
+            </tr>
+            <tr>
+              <td>Per-node hardware cost</td>
+              <td class="metric">$120 – $400</td>
+              <td class="vs">$3k – $20k</td>
+              <td class="metric" style="color:var(--green)">~25× cheaper</td>
+            </tr>
+            <tr>
+              <td>Sensor modalities fused in one pane</td>
+              <td class="metric">6+</td>
+              <td class="vs">1 – 2</td>
+              <td class="metric" style="color:var(--green)">unified</td>
+            </tr>
+            <tr>
+              <td>Offline-first operation</td>
+              <td class="metric">Yes</td>
+              <td class="vs">No</td>
+              <td class="metric" style="color:var(--green)">—</td>
+            </tr>
+            <tr>
+              <td>Encryption</td>
+              <td class="metric">AES-256 end-to-end</td>
+              <td class="vs">vendor-proprietary</td>
+              <td class="metric" style="color:var(--green)">auditable</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="section">
+      <div class="container">
+        <div class="section-label">05 — Why this, why now</div>
+        <div class="why-grid">
+          <div class="cell">
+            <div class="num">01</div>
+            <h3>DDS is production-grade.</h3>
+            <p>The Data Distribution Service is already trusted in naval, aerospace, and autonomous vehicle stacks. Nobody has shipped it as an opinionated, fleet-managed industrial product.</p>
+          </div>
+          <div class="cell">
+            <div class="num">02</div>
+            <h3>Commodity hardware caught up.</h3>
+            <p>A $75 Raspberry Pi outperforms the industrial controllers specified in 2012 RFPs. We ruggedize the enclosure, not the silicon.</p>
+          </div>
+          <div class="cell">
+            <div class="num">03</div>
+            <h3>Sovereign tech is a mandate.</h3>
+            <p>Vision 2030 and adjacent programs require locally operable, auditable stacks. Sigilint ships with a regional HQ and a trainable workforce, not a support ticket.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-band" style="border-top: 1px solid var(--ink); padding: 80px 0; background: var(--ink); color: var(--bg);">
+      <div class="container">
+        <h2 style="color: var(--bg); max-width: 22ch; font-size: clamp(28px, 3.8vw, 48px);">Want to read the <em style="color: oklch(0.7 0.12 145); font-style: normal;">architecture brief</em>?</h2>
+        <p style="color: rgba(245,244,239,0.7); max-width: 52ch; margin-top: 16px;">We share it under NDA with qualified pilot customers, government partners, and investors.</p>
+        <div style="margin-top: 32px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="contact.html?type=brief" class="btn" style="background: var(--bg); color: var(--ink); border-color: var(--bg);">Request brief →</a>
+          <a href="hacks.html" class="btn ghost" style="border-color: rgba(245,244,239,0.3); color: var(--bg);">See the hacks</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

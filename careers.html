@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Careers</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 22ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 32px;
+      margin-bottom: 32px;
+      align-items: baseline;
+    }
+    .section-head .num { font-family: var(--mono); font-size: 12px; color: var(--green); letter-spacing: 0.12em; }
+    .section-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.02em; margin: 0; max-width: 22ch; }
+
+    /* ----- Offices ----- */
+    .offices {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .office { background: var(--paper); padding: 24px; }
+    .office .code { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.12em; margin-bottom: 10px; }
+    .office h3 { font-family: var(--display); font-weight: 700; font-size: 22px; margin-bottom: 2px; }
+    .office .region { font-family: var(--mono); font-size: 11px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 14px; }
+    .office p { font-size: 13px; line-height: 1.5; color: var(--ink-2); }
+    .office .headcount { margin-top: 14px; font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.08em; }
+    @media (max-width: 900px) { .offices { grid-template-columns: 1fr 1fr; } }
+
+    /* ----- Roles ----- */
+    .roles { border: 1px solid var(--rule); background: var(--paper); }
+    .role {
+      display: grid;
+      grid-template-columns: 80px 1.2fr 1fr 140px auto;
+      gap: 24px;
+      padding: 18px 24px;
+      align-items: center;
+      border-bottom: 1px solid var(--rule);
+    }
+    .role:last-child { border-bottom: none; }
+    .role:hover { background: var(--bg); }
+    .role .code { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.08em; }
+    .role h4 { font-family: var(--display); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; }
+    .role p { font-size: 13px; color: var(--ink-3); line-height: 1.4; }
+    .role .loc { font-family: var(--mono); font-size: 11px; color: var(--ink-2); letter-spacing: 0.05em; }
+    .role .apply {
+      font-family: var(--mono); font-size: 11px;
+      padding: 8px 14px;
+      border: 1px solid var(--ink);
+      color: var(--ink);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.15s;
+    }
+    .role .apply:hover { background: var(--ink); color: var(--bg); }
+    @media (max-width: 900px) { .role { grid-template-columns: 1fr; gap: 8px; padding: 20px; } }
+
+    /* ----- Team ----- */
+    .founders {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .founder { background: var(--paper); padding: 28px; }
+    .founder .avatar {
+      width: 72px; height: 72px;
+      border: 1px solid var(--rule);
+      background: var(--bg-2);
+      margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); color: var(--ink-3); font-size: 10px; letter-spacing: 0.12em;
+    }
+    .founder h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin-bottom: 2px; }
+    .founder .role-tag { font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .founder p { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+    @media (max-width: 900px) { .founders { grid-template-columns: 1fr; } }
+
+    /* ----- Hackathons table ----- */
+    .events { width: 100%; border: 1px solid var(--rule); background: var(--paper); border-collapse: collapse; }
+    .events th, .events td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--rule); font-size: 13.5px; }
+    .events th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; background: var(--bg-2); }
+    .events tr:last-child td { border-bottom: none; }
+    .events td.when { font-family: var(--mono); color: var(--green); }
+    .events td.where { font-family: var(--mono); color: var(--ink-2); }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">05 / Careers · Offices · Community</div>
+        <h1>Hiring in <em>three continents.</em> Launching a fourth.</h1>
+        <p class="lede">Sigilint is a distributed team from day one: Austin in the US, Bratislava and Almaty in Eastern Europe / Central Asia, and a regional HQ launching in Riyadh in 2026 to partner with Vision 2030 and train engineers out of KSA universities.</p>
+      </div>
+    </section>
+
+    <!-- OFFICES -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">05-A</div>
+          <h2>Four locations. One bus.</h2>
+        </div>
+        <div class="offices">
+          <div class="office">
+            <div class="code">HQ · AMER</div>
+            <h3>Austin</h3>
+            <div class="region">Texas · USA</div>
+            <p>Product, hardware, field ops for the Texas well deployment.</p>
+            <div class="headcount">HEADCOUNT: 6 · HIRING 5</div>
+          </div>
+          <div class="office">
+            <div class="code">ENG · EMEA</div>
+            <h3>Bratislava</h3>
+            <div class="region">Slovakia</div>
+            <p>Core bus &amp; firmware. Timezone overlap with Gulf operations.</p>
+            <div class="headcount">HEADCOUNT: 4 · HIRING 6</div>
+          </div>
+          <div class="office">
+            <div class="code">ENG · CA</div>
+            <h3>Almaty</h3>
+            <div class="region">Kazakhstan</div>
+            <p>Second engineering pod. Sensor integrations, RF.</p>
+            <div class="headcount">HEADCOUNT: 2 · HIRING 4</div>
+          </div>
+          <div class="office">
+            <div class="code">HQ · MENA</div>
+            <h3>Riyadh</h3>
+            <div class="region">KSA · launching 2026</div>
+            <p>Regional HQ. Deployments, training, Vision 2030 partnership.</p>
+            <div class="headcount">HEADCOUNT: 0 · HIRING 10+</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OPEN ROLES -->
+    <section class="section" id="roles">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">05-B</div>
+          <h2>Open roles.</h2>
+        </div>
+        <div class="roles">
+          <div class="role">
+            <div class="code">ENG-01</div>
+            <div><h4>Senior Engineer — DDS / Transport</h4><p>Own the Sigil Bus. QoS profiles, discovery, mesh resilience.</p></div>
+            <div></div>
+            <div class="loc">BRATISLAVA · REMOTE</div>
+            <a href="contact.html?role=ENG-01" class="apply">Apply →</a>
+          </div>
+          <div class="role">
+            <div class="code">ENG-02</div>
+            <div><h4>Firmware Engineer — Sigil Node</h4><p>Pi-class Linux + sensor integration. Low-power profiles.</p></div>
+            <div></div>
+            <div class="loc">AUSTIN · BRATISLAVA</div>
+            <a href="contact.html?role=ENG-02" class="apply">Apply →</a>
+          </div>
+          <div class="role">
+            <div class="code">ENG-03</div>
+            <div><h4>Native App Engineer — Sigil Watch</h4><p>Desktop-class GUI. Operator-grade UX. C++ / Rust.</p></div>
+            <div></div>
+            <div class="loc">AUSTIN · REMOTE</div>
+            <a href="contact.html?role=ENG-03" class="apply">Apply →</a>
+          </div>
+          <div class="role">
+            <div class="code">ENG-04</div>
+            <div><h4>Security Engineer — Sigil-Sec</h4><p>Cryptography, key management, audit. Government-adjacent.</p></div>
+            <div></div>
+            <div class="loc">AUSTIN · BRATISLAVA</div>
+            <a href="contact.html?role=ENG-04" class="apply">Apply →</a>
+          </div>
+          <div class="role">
+            <div class="code">FLD-01</div>
+            <div><h4>Field / Deployment Engineer</h4><p>Install, commission, train. Gulf deployments. Travel 60%.</p></div>
+            <div></div>
+            <div class="loc">RIYADH · ABU DHABI</div>
+            <a href="contact.html?role=FLD-01" class="apply">Apply →</a>
+          </div>
+          <div class="role">
+            <div class="code">BIZ-01</div>
+            <div><h4>Head of MENA — Founding</h4><p>Stand up the Riyadh office. Vision 2030 relationships.</p></div>
+            <div></div>
+            <div class="loc">RIYADH</div>
+            <a href="contact.html?role=BIZ-01" class="apply">Apply →</a>
+          </div>
+          <div class="role">
+            <div class="code">INT-01</div>
+            <div><h4>Engineering Intern — KSA / universities</h4><p>Structured internship-to-FT for KSA grads. 2026 cohort.</p></div>
+            <div></div>
+            <div class="loc">RIYADH</div>
+            <a href="contact.html?role=INT-01" class="apply">Apply →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM / FOUNDERS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">05-C</div>
+          <h2>The team, thin and serious.</h2>
+        </div>
+        <div class="founders">
+          <div class="founder">
+            <div class="avatar">[ PHOTO ]</div>
+            <h3>Founder · CEO</h3>
+            <div class="role-tag">GO-TO-MARKET · CAPITAL</div>
+            <p>Two decades in industrial infrastructure and Gulf market development. Previously led deployments across oil &amp; gas and maritime operators.</p>
+          </div>
+          <div class="founder">
+            <div class="avatar">[ PHOTO ]</div>
+            <h3>Founder · CTO</h3>
+            <div class="role-tag">ARCHITECTURE · FIRMWARE</div>
+            <p>Distributed systems and real-time networks. Shipped DDS-adjacent stacks in aerospace. Lives on the bench.</p>
+          </div>
+          <div class="founder">
+            <div class="avatar">[ PHOTO ]</div>
+            <h3>Founder · Head of Field</h3>
+            <div class="role-tag">OPS · HARDWARE</div>
+            <p>Former oilfield services. Runs the Texas well array and the factory-floor demo. Knows what breaks and why.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HACKATHONS -->
+    <section class="section" id="hackathons" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">05-D</div>
+          <h2>Hackathons &amp; maker conventions.</h2>
+        </div>
+        <p style="margin-bottom: 24px; max-width: 62ch;">Sigilint recruits in the open. At every event on this list, we'll have a table, a running mesh, a pile of Pis, and dragon stickers. Come play with drones and RCs.</p>
+        <table class="events">
+          <thead>
+            <tr>
+              <th>When</th>
+              <th>Event</th>
+              <th>Where</th>
+              <th>Who we're looking for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="when">MAY 2026</td><td>Hack-TX</td><td class="where">Austin, USA</td><td>Firmware / node engineers</td></tr>
+            <tr><td class="when">JUN 2026</td><td>LEAP 26</td><td class="where">Riyadh, KSA</td><td>Founding Riyadh team</td></tr>
+            <tr><td class="when">JUL 2026</td><td>MakerFaire Prague</td><td class="where">Prague, CZ</td><td>Bratislava-adjacent engineers</td></tr>
+            <tr><td class="when">AUG 2026</td><td>GITEX GLOBAL</td><td class="where">Dubai, UAE</td><td>Pilot partners · gov</td></tr>
+            <tr><td class="when">SEP 2026</td><td>ADIPEC</td><td class="where">Abu Dhabi, UAE</td><td>Energy operators</td></tr>
+            <tr><td class="when">OCT 2026</td><td>CyPhyCon</td><td class="where">Almaty, KZ</td><td>CA pod hires</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

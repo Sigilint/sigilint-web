@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Capital</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 22ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+
+    .section-head { display: grid; grid-template-columns: 120px 1fr; gap: 32px; margin-bottom: 32px; align-items: baseline; }
+    .section-head .num { font-family: var(--mono); font-size: 12px; color: var(--green); letter-spacing: 0.12em; }
+    .section-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -0.02em; margin: 0; max-width: 22ch; }
+
+    /* ----- Investor card ----- */
+    .investor-card {
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--bg);
+      padding: 48px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+    .investor-card h3 { color: var(--bg); font-family: var(--display); font-size: 32px; font-weight: 700; letter-spacing: -0.02em; max-width: 22ch; margin-bottom: 16px; }
+    .investor-card p { color: rgba(245,244,239,0.7); font-size: 15px; line-height: 1.6; }
+    .investor-card .panel {
+      border: 1px solid rgba(245,244,239,0.2);
+      padding: 24px;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 2;
+    }
+    .investor-card .panel .row { display: flex; justify-content: space-between; border-bottom: 1px dashed rgba(245,244,239,0.15); padding: 6px 0; }
+    .investor-card .panel .row:last-child { border: none; }
+    .investor-card .panel .row .k { color: rgba(245,244,239,0.5); letter-spacing: 0.08em; text-transform: uppercase; font-size: 10.5px; }
+    .investor-card .panel .row .v { color: var(--bg); }
+    .investor-card .btn { background: var(--bg); color: var(--ink); border-color: var(--bg); margin-top: 20px; }
+    .investor-card .btn:hover { background: transparent; color: var(--bg); border-color: var(--bg); }
+    @media (max-width: 900px) { .investor-card { grid-template-columns: 1fr; padding: 32px; gap: 24px; } }
+
+    /* ----- Use of funds ----- */
+    .funds {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .fund { background: var(--paper); padding: 24px; }
+    .fund .pct { font-family: var(--display); font-weight: 700; font-size: 40px; color: var(--green); letter-spacing: -0.02em; }
+    .fund h4 { font-family: var(--display); font-weight: 600; font-size: 16px; margin: 6px 0 8px; }
+    .fund p { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+    @media (max-width: 900px) { .funds { grid-template-columns: 1fr 1fr; } }
+
+    /* ----- Partner grid ----- */
+    .partners {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+    .partner { background: var(--paper); padding: 28px; }
+    .partner .code { font-family: var(--mono); font-size: 10.5px; color: var(--ink-3); letter-spacing: 0.12em; margin-bottom: 12px; }
+    .partner h3 { font-family: var(--display); font-weight: 700; font-size: 20px; margin-bottom: 4px; }
+    .partner .kind { font-family: var(--mono); font-size: 11px; color: var(--green); letter-spacing: 0.08em; margin-bottom: 12px; }
+    .partner p { font-size: 13.5px; color: var(--ink-3); line-height: 1.55; }
+    @media (max-width: 900px) { .partners { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">06 / Capital · Investors · Strategy</div>
+        <h1>Pre-seed, with <em>line of sight</em> to Gulf pilot revenue.</h1>
+        <p class="lede">Sigilint is structured for sovereign co-investment and dual-use classification. We are quietly in conversation with strategic LPs — regional sovereign arms, energy-sector corporate ventures, and defense-adjacent funds in the US and EU.</p>
+      </div>
+    </section>
+
+    <!-- INVESTOR CARD -->
+    <section class="section" id="brief">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">06-A</div>
+          <h2>The round.</h2>
+        </div>
+        <div class="investor-card">
+          <div>
+            <h3>Raising a pre-seed to staff the bus and stand up Riyadh.</h3>
+            <p>We are building a category-defining industrial mesh for sovereign operators. The round funds the engineering team across three pods, the Riyadh regional HQ launch in 2026, and four concurrent pilot deployments already in diligence.</p>
+            <p style="margin-top: 12px;">Deck and data room available to qualified partners under NDA.</p>
+            <a href="contact.html?type=investor" class="btn">Investor brief <span class="arrow">→</span></a>
+          </div>
+          <div class="panel">
+            <div class="row"><span class="k">Stage</span><span class="v">Pre-seed</span></div>
+            <div class="row"><span class="k">Structure</span><span class="v">SAFE · priced optional</span></div>
+            <div class="row"><span class="k">Use of funds</span><span class="v">Eng · Riyadh · Pilots</span></div>
+            <div class="row"><span class="k">Pilot LOIs</span><span class="v">2 signed · 4 in diligence</span></div>
+            <div class="row"><span class="k">Runway target</span><span class="v">18 months</span></div>
+            <div class="row"><span class="k">Strategic fit</span><span class="v">Sovereign · Energy · Defense</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- USE OF FUNDS -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">06-B</div>
+          <h2>Use of funds.</h2>
+        </div>
+        <div class="funds">
+          <div class="fund">
+            <div class="pct">45%</div>
+            <h4>Engineering</h4>
+            <p>Three pods across Austin, Bratislava, Almaty. Bus, firmware, security, watch.</p>
+          </div>
+          <div class="fund">
+            <div class="pct">25%</div>
+            <h4>Riyadh HQ</h4>
+            <p>Founding team, regional ops, university pipeline, Vision 2030 programs.</p>
+          </div>
+          <div class="fund">
+            <div class="pct">20%</div>
+            <h4>Pilots</h4>
+            <p>Hardware BOM, field deployment, integration, training across four sites.</p>
+          </div>
+          <div class="fund">
+            <div class="pct">10%</div>
+            <h4>GA &amp; reserve</h4>
+            <p>Legal, ITAR/EAR compliance, sovereign contracting, runway cushion.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTNER TYPES -->
+    <section class="section" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-head">
+          <div class="num">06-C</div>
+          <h2>Who we're built to partner with.</h2>
+        </div>
+        <div class="partners">
+          <div class="partner">
+            <div class="code">LP · SOVEREIGN</div>
+            <h3>Regional sovereign arms</h3>
+            <div class="kind">MENA · GCC</div>
+            <p>Co-investment vehicles aligned with Vision 2030, UAE industrial strategy, and regional infrastructure mandates.</p>
+          </div>
+          <div class="partner">
+            <div class="code">CVC · ENERGY</div>
+            <h3>Energy corporate ventures</h3>
+            <div class="kind">OIL · GAS · POWER</div>
+            <p>Aramco Ventures and equivalents. Strategic deployment partners with in-house ops and pilot sites.</p>
+          </div>
+          <div class="partner">
+            <div class="code">LP · DEFENSE</div>
+            <h3>Defense-adjacent funds</h3>
+            <div class="kind">US · EU · DUAL-USE</div>
+            <p>Funds cleared for ITAR/EAR exposure and comfortable with sovereign customer concentration.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA STRIP -->
+    <section class="section">
+      <div class="container">
+        <div style="border: 1px solid var(--rule); padding: 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap;">
+          <div>
+            <h3 style="font-family: var(--display); font-size: 24px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 6px;">Qualified partners only.</h3>
+            <p style="color: var(--ink-3); max-width: 56ch;">Reach out with a firm, fund thesis, and check range. Data room access granted under mutual NDA.</p>
+          </div>
+          <a href="contact.html?type=investor" class="btn">Request data room <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>
