@@ -15,13 +15,13 @@
 
 # Design source files live in the repo but aren't part of the site
 [[redirects]]
-  from = "/Sigilint website.zip"
+  from = "/Sigilint%20website.zip"
   to = "/404"
   status = 404
   force = true
 
 [[redirects]]
-  from = "/Sigilint - design"
+  from = "/Sigilint%20-%20design"
   to = "/404"
   status = 404
   force = true
