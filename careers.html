@@ -95,6 +95,9 @@
     .events tr:last-child td { border-bottom: none; }
     .events td.when { font-family: var(--mono); color: var(--green); }
     .events td.where { font-family: var(--mono); color: var(--ink-2); }
+    .events-label { margin: 40px 0 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+    .events.past td, .events.past td.when, .events.past td.where { color: var(--ink-3); }
+    .events.past td a { border-bottom: 1px solid var(--green-line); }
   </style>
 </head>
 <body>
@@ -243,10 +246,26 @@
             </tr>
           </thead>
           <tbody>
+            <tr><td class="when">NOV 2026</td><td>ADIPEC</td><td class="where">Abu Dhabi, UAE</td><td>Energy operators</td></tr>
+            <tr><td class="when">DEC 2026</td><td>GITEX GLOBAL</td><td class="where">Dubai, UAE</td><td>Pilot partners · gov</td></tr>
+            <tr><td class="when">APR 2027</td><td>LEAP 27</td><td class="where">Riyadh, KSA</td><td>GCC partners · founding GCC hires</td></tr>
+          </tbody>
+        </table>
+
+        <div class="events-label">Past</div>
+        <table class="events past">
+          <thead>
+            <tr>
+              <th>When</th>
+              <th>Event</th>
+              <th>Where</th>
+              <th>Focus</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="when">MAY 2026</td><td><a href="hackathons.html">HackFW</a></td><td class="where">Fort Worth, USA</td><td>Well Monitor demo</td></tr>
             <tr><td class="when">MAY 2026</td><td>Hack-TX</td><td class="where">Austin, USA</td><td>Firmware / node engineers</td></tr>
-            <tr><td class="when">JUN 2026</td><td>LEAP 26</td><td class="where">Riyadh, KSA</td><td>GCC partners · founding GCC hires</td></tr>
-            <tr><td class="when">AUG 2026</td><td>GITEX GLOBAL</td><td class="where">Dubai, UAE</td><td>Pilot partners · gov</td></tr>
-            <tr><td class="when">SEP 2026</td><td>ADIPEC</td><td class="where">Abu Dhabi, UAE</td><td>Energy operators</td></tr>
+            <tr><td class="when">APR 2026</td><td>LEAP 26</td><td class="where">Riyadh, KSA</td><td>GCC partners · founding GCC hires</td></tr>
           </tbody>
         </table>
       </div>
