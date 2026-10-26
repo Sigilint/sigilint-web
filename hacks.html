@@ -116,7 +116,33 @@
     .telemetry-strip .item .v { font-size: 14px; color: var(--ink); font-weight: 500; }
     .telemetry-strip .item .v.green { color: var(--green); }
 
+    .demos {
+      border-top: 1px solid var(--rule);
+      padding: 56px 0 72px;
+    }
+    .demo-list {
+      list-style: none;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+    }
+    .demo-list li {
+      display: grid;
+      grid-template-columns: 240px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      padding: 18px 20px;
+      border-top: 1px solid var(--rule);
+    }
+    .demo-list li:first-child { border-top: none; }
+    .demo-list .name { font-family: var(--display); font-weight: 600; font-size: 18px; }
+    .demo-list .name .tag { display: block; margin-top: 4px; font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+    .demo-list p { font-size: 14.5px; line-height: 1.55; }
+    .demo-list p a { border-bottom: 1px solid var(--green-line); }
+    .demo-list .go { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; border-bottom: 1px solid var(--green-line); }
+    .demos .note { margin-top: 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+
     @media (max-width: 900px) {
+      .demo-list li { grid-template-columns: 1fr; gap: 6px; }
       .poc-head { grid-template-columns: 1fr; gap: 4px; }
       .poc-body { grid-template-columns: 1fr; gap: 24px; }
       .telemetry-strip { grid-template-columns: 1fr 1fr; }
@@ -131,6 +157,41 @@
         <div class="crumbs">04 / Hacks — Proof, not slides</div>
         <h1>Three <em>live</em> hacks. Built by the team, on commodity parts.</h1>
         <p class="lede">Our POCs run in our homes, in a Texas field, and on a table at hackathons. They are deliberately low-fidelity — we optimize for end-to-end signal over demo polish. If it works on a carafe, it works on a pipeline.</p>
+      </div>
+    </section>
+
+    <!-- LIVE DEMOS — each app is its own deployment; change the URLs here -->
+    <section class="demos" id="demos">
+      <div class="container">
+        <div class="section-label">Live demos — open in your browser</div>
+        <ul class="demo-list">
+          <li>
+            <div class="name">Well Monitor<span class="tag">HackFW · May 2026</span></div>
+            <p>A field of wells on a topographic map, each with methane, H₂S and VOC readings and alert states. Our <a href="hackathons.html">HackFW</a> entry — <a href="https://devpost.com/software/sigilint-well-monitor">demo video on Devpost</a>.</p>
+            <a class="go" href="https://sigilint-well-monitor.netlify.app/">Open →</a>
+          </li>
+          <li>
+            <div class="name">Well Site Monitor<span class="tag">Sigil Watch · one well</span></div>
+            <p>One producing Barnett Shale gas well in Tarrant County, zoomed in: a live cutaway of the pad and the ground beneath it, with 54 sensors across production, safety, environment, integrity, security and weather. The well is a real public RRC record; the sensors and readings are simulated.</p>
+            <a class="go" href="https://well-site.sigilint.com/">Open →</a>
+          </li>
+          <li>
+            <div class="name">Offshore Platform Monitor<span class="tag">Sigil Watch · offshore</span></div>
+            <p>A side-elevation schematic of a fictional fixed-jacket platform in the Gulf of Mexico, with 84 sensors in six categories, scripted incidents, alerts and a raw data feed. Everything is simulated.</p>
+            <a class="go" href="https://platform.sigilint.com/">Open →</a>
+          </li>
+          <li>
+            <div class="name">Tarrant Well Explorer<span class="tag">Public RRC data · map</span></div>
+            <p>Every well the Texas Railroad Commission lists in Tarrant County — about 7,300 — on a searchable map with status filters and well-ID and address lookup. Read-only; no sensor data.</p>
+            <a class="go" href="https://tarrant-map.sigilint.com/">Open →</a>
+          </li>
+          <li>
+            <div class="name">Dashboard Toolkit<span class="tag">Examples</span></div>
+            <p>The framework behind our monitors, with working examples: a sensor site, a single oil well pad with solar ESP32 fenceline nodes, and a release matrix.</p>
+            <a class="go" href="https://toolkit.sigilint.com/">Open →</a>
+          </li>
+        </ul>
+        <div class="note">// Demos run on simulated or public data. Nothing here is a live customer site.</div>
       </div>
     </section>
 
@@ -286,6 +347,7 @@
             <p style="margin-top: 16px; font-size: 16px; line-height: 1.55;">We recruit in the open. If you want to solder a node, fly a drone, or help us stand up a mesh in a parking lot — come find the Sigilint table. We ship swag (the dragon sticker), snacks, and Raspberry Pis.</p>
             <div style="margin-top: 24px;">
               <a href="careers.html#hackathons" class="btn">See the schedule →</a>
+              <a href="hackathons.html" class="btn ghost">Our HackFW entries <span class="arrow">→</span></a>
             </div>
           </div>
           <div style="border: 1px solid var(--rule); background: var(--paper); padding: 20px;">

@@ -1,12 +1,14 @@
 // Shared header/footer injection so nav stays in sync across pages.
 (function () {
-  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  // Netlify serves /hacks for hacks.html, so compare without the extension
+  const currentPath = (window.location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '') + '.html';
 
   const navItems = [
     { href: 'index.html', label: 'Overview' },
     { href: 'technology.html', label: 'Technology' },
     { href: 'verticals.html', label: 'Verticals' },
     { href: 'hacks.html', label: 'Hacks' },
+    { href: 'hackathons.html', label: 'Hackathons' },
     { href: 'careers.html', label: 'Careers' },
     { href: 'capital.html', label: 'Capital' },
     { href: 'contact.html', label: 'Contact' },
@@ -59,6 +61,7 @@
             <li><a href="technology.html">Technology</a></li>
             <li><a href="verticals.html">Verticals</a></li>
             <li><a href="hacks.html">Hacks</a></li>
+            <li><a href="hacks.html#demos">Live demos</a></li>
           </ul>
         </div>
         <div>
@@ -66,7 +69,7 @@
           <ul>
             <li><a href="careers.html">Careers</a></li>
             <li><a href="capital.html">Capital</a></li>
-            <li><a href="hacks.html#hackathons">Hackathons</a></li>
+            <li><a href="hackathons.html">Hackathons</a></li>
             <li><a href="contact.html">Pilot inquiry</a></li>
           </ul>
         </div>
