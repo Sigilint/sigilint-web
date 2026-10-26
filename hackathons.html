@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — Hackathons</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 20ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+    .page-hero .lede a, .entry .copy p a { border-bottom: 1px solid var(--green-line); }
+
+    .entry {
+      border-top: 1px solid var(--rule);
+      padding: 72px 0;
+    }
+    .entry-head {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+    .entry-head .num { font-family: var(--mono); font-size: 14px; color: var(--green); letter-spacing: 0.1em; }
+    .entry-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(30px, 3.6vw, 44px); letter-spacing: -0.02em; margin: 0; }
+    .entry-head .status {
+      font-family: var(--mono); font-size: 10px;
+      padding: 4px 10px; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--green-line);
+      background: var(--green-soft);
+      color: var(--green);
+    }
+    .entry-head .status.building { border-color: var(--rule); background: var(--bg-2); color: var(--ink-3); }
+
+    .entry-body {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 48px;
+    }
+    .entry-body .copy p { font-size: 15.5px; line-height: 1.6; margin-bottom: 14px; }
+    .entry-body .copy .kvs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-top: 20px;
+    }
+    .entry-body .copy .kv { background: var(--paper); padding: 14px 16px; }
+    .entry-body .copy .kv .k { font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 4px; }
+    .entry-body .copy .kv .v { font-family: var(--display); font-size: 17px; font-weight: 600; }
+    .entry-body .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .shot {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      overflow: hidden;
+      display: block;
+    }
+    .shot .head, .shot .footer-row {
+      padding: 10px 16px;
+      background: var(--bg-2);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .shot .head { border-bottom: 1px solid var(--rule); }
+    .shot .footer-row { border-top: 1px solid var(--rule); }
+    .shot img { display: block; width: 100%; height: auto; }
+    a.shot:hover { color: inherit; border-color: var(--green); }
+
+    .tracks {
+      list-style: none;
+      margin-top: 20px;
+      border: 1px solid var(--rule);
+      background: var(--paper);
+      font-family: var(--mono);
+      font-size: 12.5px;
+      line-height: 1.9;
+      padding: 14px 18px;
+    }
+    .tracks li::before { content: '◇ '; color: var(--green); }
+
+    @media (max-width: 900px) {
+      .entry-head { grid-template-columns: 1fr; gap: 4px; }
+      .entry-body { grid-template-columns: 1fr; gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">05 / Hackathons — HackFW</div>
+        <h1>Built in <em>Fort Worth</em>, in front of a crowd.</h1>
+        <p class="lede"><a href="https://hack.fwtx.city/">HackFW</a> is Fort Worth's builder program for physical industrial systems, run by the Fort Worth DAO, a 501(c)(3) nonprofit. We bring hardware, a running bus and a dashboard, and we show what the field would see.</p>
+      </div>
+    </section>
+
+    <!-- HACKFW OCTOBER 2026 -->
+    <!-- TODO (confirm with the team): our track, team members, and the Devpost/submission link for the October entry; update the status after Demo Day on Oct 30. -->
+    <section class="entry" id="hacktober">
+      <div class="container">
+        <div class="entry-head">
+          <div class="num">OCT-26</div>
+          <h2>HackFW October — “Hacktober”</h2>
+          <div class="status building">● BUILDING · DEMO DAY OCT 30</div>
+        </div>
+        <div class="entry-body">
+          <div class="copy">
+            <p>The October 2026 program is the MADE Challenge — “Rebuilding System Density” — a month of virtual incubation from the October 1 kickoff to an in-person Enterprise Demo Day on October 30.</p>
+            <p>Our October build is a fenceline air watch for the oil well next door: solar-powered ESP32 nodes around a well pad that wake, sample methane, H₂S and VOCs, and send over ESP-NOW to a Raspberry Pi gateway, with the readings on a live site map.</p>
+            <p>The <a href="https://sigilint-dashboard-toolkit.netlify.app/well-pad/">well-pad example</a> in our dashboard toolkit shows the site: the pumpjack, tank battery, gate sensor and nodes, with a guided tour and scenario stories. Its data is simulated.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Program</div><div class="v">MADE Challenge</div></div>
+              <div class="kv"><div class="k">Dates</div><div class="v">Oct 1 – 30, 2026</div></div>
+              <div class="kv"><div class="k">Nodes</div><div class="v">ESP32 · ESP-NOW</div></div>
+              <div class="kv"><div class="k">Gases</div><div class="v">CH₄ · H₂S · VOC</div></div>
+            </div>
+            <ul class="tracks">
+              <li>AI for Manufacturing</li>
+              <li>Supplier Relationship Management</li>
+              <li>AI for Transportation</li>
+              <li>Tokenized Industrial Real Estate</li>
+              <li>Open Forum</li>
+            </ul>
+          </div>
+          <div>
+            <a class="shot" href="https://sigilint-dashboard-toolkit.netlify.app/well-pad/">
+              <div class="head"><div>HACKFW / OCT-26</div><div>ILLUSTRATION</div></div>
+              <img src="uploads/hackfw-october-fenceline.jpg" width="1200" height="800" alt="Illustration: a pumpjack at dusk, a fenceline map with a methane plume at the north fence node, and an ESP32 board" />
+              <div class="footer-row"><div>FENCELINE AIR WATCH</div><div>OPEN EXAMPLE →</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HACKFW SPRING 2026 -->
+    <section class="entry" id="spring">
+      <div class="container">
+        <div class="entry-head">
+          <div class="num">MAY-26</div>
+          <h2>HackFW Spring — Well Monitor</h2>
+          <div class="status">● PRESENTED · MAY 2, 2026</div>
+        </div>
+        <div class="entry-body">
+          <div class="copy">
+            <p>HackFW's first edition. We built a well monitor: a field of wells on a topographic map, each reporting methane, H₂S and VOCs, with alert states when a well starts to leak. We presented it on May 2, 2026.</p>
+            <p>It is the software side of our abandoned-well work (<a href="hacks.html#poc-methane">POC-03</a>), and the starting point for the monitors on our <a href="hacks.html#demos">live demos</a> list.</p>
+            <div class="kvs">
+              <div class="kv"><div class="k">Build</div><div class="v">Well Monitor</div></div>
+              <div class="kv"><div class="k">Presented</div><div class="v">May 2, 2026</div></div>
+              <div class="kv"><div class="k">Gases</div><div class="v">CH₄ · H₂S · VOC</div></div>
+              <div class="kv"><div class="k">Data</div><div class="v">Simulated</div></div>
+            </div>
+            <div class="links">
+              <a href="https://sigilint-well-monitor.netlify.app/" class="btn">Open the demo <span class="arrow">→</span></a>
+              <a href="https://devpost.com/software/sigilint-well-monitor" class="btn ghost">Video on Devpost</a>
+            </div>
+          </div>
+          <div>
+            <a class="shot" href="https://sigilint-well-monitor.netlify.app/">
+              <div class="head"><div>HACKFW / MAY-26</div><div>SCREENSHOT</div></div>
+              <img src="uploads/well-monitor-thumbnail.png" width="389" height="272" alt="Screenshot of the Sigilint Well Monitor: wells on a topographic map with a sensor panel" />
+              <div class="footer-row"><div>SIGILINT WELL MONITOR</div><div>OPEN DEMO →</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CALL -->
+    <section class="section" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-label">Come build with us</div>
+        <h2 style="max-width:22ch;">Find the Sigilint table.</h2>
+        <p style="margin-top: 16px; font-size: 16px; line-height: 1.55;">If you want to solder a node, flash an ESP32, or put a sensor on a fence line — come say hello at the next HackFW, or write to us.</p>
+        <div style="margin-top: 24px; display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="https://hack.fwtx.city/" class="btn">HackFW <span class="arrow">→</span></a>
+          <a href="contact.html?type=other" class="btn ghost">Get in touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>
