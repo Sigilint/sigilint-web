@@ -10,7 +10,7 @@
 
 [[redirects]]
   from = "/well-monitor-demo/*"
-  to = "https://sigilint-well-monitor.netlify.app/:splat"
+  to = "https://wellmonitor.sigilint.com/:splat"
   status = 301
 
 # Design source files live in the repo but aren't part of the site

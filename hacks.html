@@ -138,6 +138,7 @@
     .demo-list .name .tag { display: block; margin-top: 4px; font-family: var(--mono); font-size: 10px; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
     .demo-list p { font-size: 14.5px; line-height: 1.55; }
     .demo-list p a { border-bottom: 1px solid var(--green-line); }
+    .poc .copy .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
     .demo-list .go { font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; border-bottom: 1px solid var(--green-line); }
     .demos .note { margin-top: 14px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
 
@@ -168,27 +169,27 @@
           <li>
             <div class="name">Well Monitor<span class="tag">HackFW · May 2026</span></div>
             <p>A field of wells on a topographic map, each with methane, H₂S and VOC readings and alert states. Our <a href="hackathons.html">HackFW</a> entry — <a href="https://devpost.com/software/sigilint-well-monitor">demo video on Devpost</a>.</p>
-            <a class="go" href="https://sigilint-well-monitor.netlify.app/">Open →</a>
+            <a class="go" href="https://wellmonitor.sigilint.com/">Open →</a>
           </li>
           <li>
             <div class="name">Well Site Monitor<span class="tag">Sigil Watch · one well</span></div>
             <p>One producing Barnett Shale gas well in Tarrant County, zoomed in: a live cutaway of the pad and the ground beneath it, with 54 sensors across production, safety, environment, integrity, security and weather. The well is a real public RRC record; the sensors and readings are simulated.</p>
-            <a class="go" href="https://sigilint-well-site-monitor.netlify.app/">Open →</a>
+            <a class="go" href="https://wellsite.sigilint.com/">Open →</a>
           </li>
           <li>
             <div class="name">Offshore Platform Monitor<span class="tag">Sigil Watch · offshore</span></div>
             <p>A side-elevation schematic of a fictional fixed-jacket platform in the Gulf of Mexico, with 84 sensors in six categories, scripted incidents, alerts and a raw data feed. Everything is simulated.</p>
-            <a class="go" href="https://sigilint-offshore-platform-monitor.netlify.app/">Open →</a>
+            <a class="go" href="https://platform.sigilint.com/">Open →</a>
           </li>
           <li>
             <div class="name">Tarrant Well Explorer<span class="tag">Public RRC data · map</span></div>
             <p>Every well the Texas Railroad Commission lists in Tarrant County — about 7,300 — on a searchable map with status filters and well-ID and address lookup. Read-only; no sensor data.</p>
-            <a class="go" href="https://sigilint-tarrant-map.netlify.app/">Open →</a>
+            <a class="go" href="https://wells.sigilint.com/">Open →</a>
           </li>
           <li>
             <div class="name">Dashboard Toolkit<span class="tag">Examples</span></div>
             <p>The framework behind our monitors, with working examples: a sensor site, a single oil well pad with solar ESP32 fenceline nodes, and a release matrix.</p>
-            <a class="go" href="https://sigilint-dashboard-toolkit.netlify.app/">Open →</a>
+            <a class="go" href="https://toolkit.sigilint.com/">Open →</a>
           </li>
         </ul>
         <div class="note">// Demos run on simulated or public data. Nothing here is a live customer site.</div>
@@ -318,6 +319,11 @@
               <div class="kv"><div class="k">Nodes deployed</div><div class="v">6 · expanding</div></div>
               <div class="kv"><div class="k">Power</div><div class="v">Solar · 12 V</div></div>
               <div class="kv"><div class="k">Backhaul</div><div class="v">LTE + sat fallback</div></div>
+            </div>
+            <div class="links">
+              <a href="https://wellmonitor.sigilint.com/" class="btn">Well field demo <span class="arrow">→</span></a>
+              <a href="https://wellsite.sigilint.com/" class="btn ghost">One well, up close</a>
+              <a href="https://wells.sigilint.com/" class="btn ghost">Tarrant well map</a>
             </div>
           </div>
           <div>
