@@ -4,7 +4,7 @@ How sigilint.com and the demo apps are hosted, and how to change them. Set up on
 
 ## Overview
 
-Each app is its own GitHub repo in the [Sigilint org](https://github.com/sigilint) and its own Netlify site. Every site deploys automatically when its repo's `main` branch changes. All repos are **private**. Every site is a static site, and only the dashboard toolkit has a build step.
+Each app is its own GitHub repo in the [Sigilint org](https://github.com/sigilint) and its own Netlify site. Every site deploys automatically when its repo's `main` branch changes. All repos are **public** (made public 2026-10-25 for the hackathon). Every site is a static site, and only the dashboard toolkit has a build step.
 
 | Site | URL | Repo | Netlify site | Build | Publish dir |
 |---|---|---|---|---|---|
@@ -27,7 +27,7 @@ Each repo's `netlify.toml` holds its build settings, so the Netlify dashboard se
 
 - **GitHub:** the `Sigilint` organization, where `fijiaaron` is an admin.
 - **Netlify:** the team *Aaron Evans's team* (slug `fijiaaron`, Pro plan). All six sites live there.
-- **Netlify ↔ GitHub:** the Netlify GitHub app is installed on the Sigilint org with access to all repositories. Without it, Netlify can't see the private repos.
+- **Netlify ↔ GitHub:** the Netlify GitHub app is installed on the Sigilint org with access to all repositories. Netlify needs it to build from the org's repos.
 - **DNS:** sigilint.com uses Netlify DNS (nameservers `dns1–4.p08.nsone.net`), so it is managed in Netlify under Domains, not at the registrar. Adding a custom domain to a site creates its DNS record and Let's Encrypt certificate automatically.
 
 ## The website (sigilint.com)
