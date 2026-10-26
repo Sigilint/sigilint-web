@@ -154,6 +154,20 @@
       justify-content: space-between;
     }
 
+    .error-panel {
+      display: none;
+      margin-top: 18px;
+      padding: 14px 16px;
+      border: 1px solid var(--orange);
+      background: var(--orange-soft);
+      font-size: 13.5px;
+      line-height: 1.55;
+      color: var(--ink);
+    }
+    .error-panel.show { display: block; }
+    .error-panel strong { color: var(--orange); font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; margin-right: 6px; }
+    .error-panel .email { font-family: var(--mono); }
+
     @media (max-width: 900px) {
       .contact-grid { grid-template-columns: 1fr; }
       form .row-2 { grid-template-columns: 1fr; }
@@ -175,7 +189,11 @@
       <div class="container">
         <div class="contact-grid">
           <div>
-            <form id="contactForm">
+            <form id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact"/>
+              <input type="hidden" name="reference" id="reference" value=""/>
+              <input type="hidden" name="role" id="role" value=""/>
+              <p hidden><label>Leave this empty <input name="bot-field"/></label></p>
               <div class="head">
                 <div>FORM · SIGI-CONTACT-v1</div>
                 <div>ENCRYPTED</div>
@@ -190,28 +208,28 @@
                   <button type="button" data-val="press">Press</button>
                   <button type="button" data-val="other">Other</button>
                 </div>
-                <input type="hidden" id="channel" value="pilot"/>
+                <input type="hidden" name="channel" id="channel" value="pilot"/>
               </div>
 
               <div class="row row-2">
                 <div>
                   <label>Name</label>
-                  <input type="text" required placeholder="Full name"/>
+                  <input type="text" name="name" required placeholder="Full name"/>
                 </div>
                 <div>
                   <label>Organization</label>
-                  <input type="text" placeholder="Company / institution"/>
+                  <input type="text" name="organization" placeholder="Company / institution"/>
                 </div>
               </div>
 
               <div class="row row-2">
                 <div>
                   <label>Email</label>
-                  <input type="email" required placeholder="name@org.com"/>
+                  <input type="email" name="email" required placeholder="name@org.com"/>
                 </div>
                 <div>
                   <label>Region</label>
-                  <select>
+                  <select name="region">
                     <option>GCC / KSA / UAE</option>
                     <option>United States</option>
                     <option>Other</option>
@@ -221,17 +239,20 @@
 
               <div class="row">
                 <label>Subject</label>
-                <input type="text" placeholder="One-line summary"/>
+                <input type="text" name="subject" id="subject" placeholder="One-line summary"/>
               </div>
 
               <div class="row">
                 <label>Message</label>
-                <textarea placeholder="Context, site type, timelines, budget envelope if relevant, or links to public material. Anything sensitive — tell us and we will follow up over encrypted channel."></textarea>
+                <textarea name="message" placeholder="Context, site type, timelines, budget envelope if relevant, or links to public material. Anything sensitive — tell us and we will follow up over encrypted channel."></textarea>
               </div>
 
               <div class="submit-row">
                 <div class="note">// NDA available on request</div>
                 <button type="submit" class="btn">Transmit <span class="arrow">→</span></button>
+              </div>
+              <div class="error-panel" id="sendError" role="alert">
+                <strong>Not sent.</strong> Your message did not reach us — nothing was lost on your side, so you can try again, or email <span class="email">contact@sigilint.io</span> directly.
               </div>
             </form>
 
@@ -239,7 +260,7 @@
               <h3>Channel opened.</h3>
               <p>We received your message. A team member will route it to the right desk within two business days. If your inquiry is time-sensitive, please email the address in the right column directly.</p>
               <div class="ticket">
-                <div>TICKET</div>
+                <div>REFERENCE</div>
                 <div id="ticketId">SIGI-—</div>
               </div>
             </div>
@@ -299,17 +320,35 @@
     } else if (role) {
       const btn = document.querySelector('#types button[data-val="career"]');
       if (btn) btn.click();
-      const subject = document.querySelectorAll('form input[type="text"]')[2];
-      if (subject) subject.value = 'Application — ' + role;
+      document.getElementById('role').value = role;
+      document.getElementById('subject').value = 'Application — ' + role;
     }
 
-    // submit stub
-    document.getElementById('contactForm').addEventListener('submit', e => {
+    // submit to Netlify Forms; only show success once the POST is accepted
+    const form = document.getElementById('contactForm');
+    const sendError = document.getElementById('sendError');
+    form.addEventListener('submit', async e => {
       e.preventDefault();
       const id = 'SIGI-' + Math.random().toString(36).slice(2, 8).toUpperCase();
-      document.getElementById('ticketId').textContent = id;
-      document.getElementById('contactForm').style.display = 'none';
-      document.getElementById('success').classList.add('show');
+      document.getElementById('reference').value = id;
+      const btn = form.querySelector('button[type="submit"]');
+      btn.disabled = true;
+      sendError.classList.remove('show');
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString(),
+        });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        document.getElementById('ticketId').textContent = id;
+        form.style.display = 'none';
+        document.getElementById('success').classList.add('show');
+      } catch (err) {
+        sendError.classList.add('show');
+      } finally {
+        btn.disabled = false;
+      }
     });
   </script>
 </body>
