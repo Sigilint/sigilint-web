@@ -1,0 +1,27 @@
+# Static site, no build step: Netlify publishes the repo root as-is.
+[build]
+  publish = "."
+
+# URLs from the previous sigilint.com one-pager (fijiaaron/sigilint-www)
+[[redirects]]
+  from = "/hacks/*"
+  to = "/hacks.html"
+  status = 301
+
+[[redirects]]
+  from = "/well-monitor-demo/*"
+  to = "https://sigilint-well-monitor.netlify.app/:splat"
+  status = 301
+
+# Design source files live in the repo but aren't part of the site
+[[redirects]]
+  from = "/Sigilint website.zip"
+  to = "/404"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/Sigilint - design"
+  to = "/404"
+  status = 404
+  force = true
