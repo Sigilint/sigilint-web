@@ -19,15 +19,6 @@
     <circle cx="12" cy="12" r="1.8" fill="oklch(0.48 0.08 145)"/>
   </svg>`;
 
-  const classified = `
-    <div class="classified-bar">
-      <div class="inner">
-        <div><span class="dot"></span>LAYER: DDS.MESH // AUTH: SIGIL-SEC // LATENCY: 9ms // STATUS: ACTIVE</div>
-        <div>DOC-SIGI-0007 // REV 04.19.26 // STEALTH</div>
-      </div>
-    </div>
-  `;
-
   const nav = `
     <nav class="nav">
       <div class="inner">
@@ -70,7 +61,7 @@
             <li><a href="careers.html">Careers</a></li>
             <li><a href="capital.html">Capital</a></li>
             <li><a href="hacks.html#hackathons">Hackathons</a></li>
-            <li><a href="contact.html">Pilot inquiry</a></li>
+            <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
         <div>
@@ -87,6 +78,6 @@
     </footer>
   `;
 
-  document.body.insertAdjacentHTML('afterbegin', classified + nav);
+  document.body.insertAdjacentHTML('afterbegin', nav);
   document.body.insertAdjacentHTML('beforeend', footer);
 })();
