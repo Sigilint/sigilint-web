@@ -365,6 +365,16 @@
       transition: border-color 0.15s;
     }
     .poc-mini:hover { border-color: var(--ink); }
+    a.poc-mini { display: block; color: inherit; }
+    .poc-mini .shot {
+      display: block;
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      margin-bottom: 16px;
+      border: 1px solid var(--rule);
+    }
     .poc-mini .placeholder {
       aspect-ratio: 16 / 10;
       margin-bottom: 16px;
