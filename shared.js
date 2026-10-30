@@ -8,6 +8,7 @@
     { href: 'technology.html', label: 'Technology' },
     { href: 'verticals.html', label: 'Verticals' },
     { href: 'hacks.html', label: 'Hacks' },
+    { href: 'news.html', label: 'News' },
     { href: 'careers.html', label: 'Careers' },
     { href: 'capital.html', label: 'Capital' },
     { href: 'contact.html', label: 'Contact' },
@@ -61,6 +62,7 @@
             <li><a href="verticals.html">Verticals</a></li>
             <li><a href="hacks.html">Hacks</a></li>
             <li><a href="hacks.html#demos">Live demos</a></li>
+            <li><a href="news.html">News &amp; events</a></li>
           </ul>
         </div>
         <div>

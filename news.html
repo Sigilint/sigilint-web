@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGILINT — News &amp; Events</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .page-hero { padding: 72px 0 48px; }
+    .page-hero .crumbs { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 20px; }
+    .page-hero h1 { font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.02; max-width: 20ch; }
+    .page-hero h1 em { font-style: normal; color: var(--green); }
+    .page-hero .lede { max-width: 62ch; margin-top: 24px; font-size: 17px; line-height: 1.55; }
+    .page-hero .jump { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 28px; }
+
+    /* ----- News ----- */
+    .story {
+      border-top: 1px solid var(--rule);
+      padding: 72px 0;
+    }
+    .story-head {
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 24px;
+      align-items: baseline;
+      margin-bottom: 32px;
+    }
+    .story-head .date { font-family: var(--mono); font-size: 12px; color: var(--green); letter-spacing: 0.1em; text-transform: uppercase; }
+    .story-head .kind { display: block; margin-top: 4px; color: var(--ink-3); font-size: 10px; }
+    .story-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(28px, 3.4vw, 42px); letter-spacing: -0.02em; margin: 0; max-width: 24ch; }
+    .story-body {
+      display: grid;
+      grid-template-columns: 120px 1.3fr 1fr;
+      gap: 24px 48px;
+    }
+    .story-body .copy { grid-column: 2; }
+    .story-body .copy p { font-size: 15.5px; line-height: 1.6; margin-bottom: 14px; }
+    .story-body .copy p a, .roundup a { border-bottom: 1px solid var(--green-line); }
+    .story-body .links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+
+    .shot {
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      overflow: hidden;
+      display: block;
+    }
+    .shot .head, .shot .footer-row {
+      padding: 10px 16px;
+      background: var(--bg-2);
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+    .shot .head { border-bottom: 1px solid var(--rule); }
+    .shot .footer-row { border-top: 1px solid var(--rule); }
+    .shot img { display: block; width: 100%; height: auto; }
+    a.shot:hover { color: inherit; border-color: var(--green); }
+
+    .roundup { list-style: none; border: 1px solid var(--rule); background: var(--paper); }
+    .roundup li { padding: 16px 18px; border-bottom: 1px solid var(--rule); }
+    .roundup li:last-child { border-bottom: none; }
+    .roundup .when { display: block; margin-bottom: 4px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); }
+    .roundup p { font-size: 14px; line-height: 1.55; color: var(--ink-2); }
+    .roundup .src { display: inline-block; margin-top: 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; }
+    .note { margin-top: 16px; font-family: var(--mono); font-size: 11px; color: var(--ink-3); }
+
+    /* ----- Events table (same as careers) ----- */
+    .events { width: 100%; border: 1px solid var(--rule); background: var(--paper); border-collapse: collapse; }
+    .events th, .events td { padding: 14px 18px; text-align: left; border-bottom: 1px solid var(--rule); font-size: 13.5px; }
+    .events th { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; background: var(--bg-2); }
+    .events tr:last-child td { border-bottom: none; }
+    .events td.when { font-family: var(--mono); color: var(--green); white-space: nowrap; }
+    .events td.where { font-family: var(--mono); color: var(--ink-2); }
+    .events td a { border-bottom: 1px solid var(--green-line); }
+    .events-label { margin: 40px 0 12px; font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-3); }
+    .events-label:first-of-type { margin-top: 0; }
+    .events.past td, .events.past td.when, .events.past td.where { color: var(--ink-3); }
+
+    @media (max-width: 900px) {
+      .story-head { grid-template-columns: 1fr; gap: 6px; }
+      .story-body { grid-template-columns: 1fr; }
+      .story-body .copy { grid-column: auto; }
+      .events th:nth-child(4), .events td:nth-child(4) { display: none; }
+      .events th, .events td { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="crumbs">04-B / News &amp; Events</div>
+        <h1>From the field, <em>and on the road.</em></h1>
+        <p class="lede">What we're building, where to find the Sigilint table, and the work in orphan and idle wells we follow closely.</p>
+        <div class="jump">
+          <a href="#events" class="btn">Events <span class="arrow">→</span></a>
+          <a href="#news" class="btn ghost">News</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="section" id="events" style="background: var(--bg-2);">
+      <div class="container">
+        <div class="section-label">Events</div>
+        <h2 style="max-width:22ch; margin-bottom: 32px;">Where to find us.</h2>
+
+        <div class="events-label">Upcoming</div>
+        <table class="events">
+          <thead>
+            <tr><th>When</th><th>Event</th><th>Where</th><th>Why we're there</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="when">NOV 2026</td><td>ADIPEC</td><td class="where">Abu Dhabi, UAE</td><td>Energy operators</td></tr>
+            <tr><td class="when">DEC 2026</td><td>GITEX GLOBAL</td><td class="where">Dubai, UAE</td><td>Pilot partners · gov</td></tr>
+            <tr><td class="when">APR 2027</td><td>LEAP 27</td><td class="where">Riyadh, KSA</td><td>GCC partners · founding GCC hires</td></tr>
+            <!-- TODO: add exact dates once IQ-Hub announces the 2027 edition -->
+            <tr><td class="when">2027 · TBA</td><td><a href="https://www.orphan-idle-wells.com">Orphan &amp; Idle Wells USA 2027</a></td><td class="where">Houston, USA</td><td>Well monitoring for plugging programs</td></tr>
+          </tbody>
+        </table>
+
+        <div class="events-label">Past</div>
+        <table class="events past">
+          <thead>
+            <tr><th>When</th><th>Event</th><th>Where</th><th>Focus</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="when">OCT 2026</td><td><a href="#hacktober">HackFW October “Hacktober”</a></td><td class="where">Fort Worth, USA</td><td>Fenceline air watch · Demo Day Oct 30</td></tr>
+            <tr><td class="when">JUN 2026</td><td><a href="https://www.orphan-idle-wells.com">Orphan &amp; Idle Wells USA 2026</a></td><td class="where">Houston, USA</td><td>Orphan and idle well monitoring · Jun 24–25</td></tr>
+            <tr><td class="when">MAY 2026</td><td><a href="hacks.html#spring">HackFW</a></td><td class="where">Fort Worth, USA</td><td>Well Monitor demo</td></tr>
+            <tr><td class="when">MAY 2026</td><td>Hack-TX</td><td class="where">Austin, USA</td><td>Firmware / node engineers</td></tr>
+            <tr><td class="when">APR 2026</td><td>LEAP 26</td><td class="where">Riyadh, KSA</td><td>GCC partners · founding GCC hires</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <div id="news"></div>
+
+    <article class="story" id="hacktober">
+      <div class="container">
+        <div class="story-head">
+          <div class="date">Oct 30, 2026<span class="kind">Sigilint</span></div>
+          <h2>Hacktober Demo Day: a fenceline air watch for the well next door</h2>
+        </div>
+        <div class="story-body">
+          <div class="copy">
+            <p>October was HackFW's MADE Challenge, “Rebuilding System Density”: a month of virtual incubation from the October 1 kickoff to an in-person Enterprise Demo Day in Fort Worth on October 30.</p>
+            <p>Our build puts solar-powered ESP32 nodes around a well pad. Each one wakes, samples methane, H₂S and VOCs, and sends its readings over ESP-NOW to a Raspberry Pi gateway, which feeds a live site map. It's the cheap, always-on layer of our <a href="https://wellmonitor.sigilint.com/">Texas well monitor</a>: the part that watches the fence line when nobody is on site.</p>
+            <p>The <a href="https://toolkit.sigilint.com/well-pad/">well-pad example</a> in our dashboard toolkit shows the site — pumpjack, tank battery, gate sensor and nodes — with a guided tour and scenario stories. Its data is simulated.</p>
+            <div class="links">
+              <a href="hacks.html#hacktober" class="btn">Read the entry <span class="arrow">→</span></a>
+              <a href="https://toolkit.sigilint.com/well-pad/" class="btn ghost">Open the example</a>
+              <a href="https://hack.fwtx.city/" class="btn ghost">HackFW</a>
+            </div>
+          </div>
+          <div>
+            <a class="shot" href="https://toolkit.sigilint.com/well-pad/">
+              <div class="head"><div>HACKFW / OCT-26</div><div>ILLUSTRATION</div></div>
+              <img src="uploads/hackfw-october-fenceline.jpg" width="1200" height="800" alt="Illustration: a pumpjack at dusk, a fenceline map with a methane plume at the north fence node, and an ESP32 board" />
+              <div class="footer-row"><div>FENCELINE AIR WATCH</div><div>OPEN EXAMPLE →</div></div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="story" id="well-done">
+      <div class="container">
+        <div class="story-head">
+          <div class="date">Oct 2026<span class="kind">Field notes</span></div>
+          <h2>Well Done Foundation's year of plugging orphan wells</h2>
+        </div>
+        <div class="story-body">
+          <div class="copy">
+            <p>The <a href="https://welldonefoundation.org">Well Done Foundation</a> is a nonprofit that plugs orphaned and abandoned oil and gas wells — wells with no responsible operator left — and measures what each one emits before and after the plug goes in. It has plugged more than 117 wells in 15 states since its first, on Earth Day 2019, and it runs an <a href="https://welldonefoundation.org/texas-orphaned-wells/">orphaned wells program in Texas</a>.</p>
+            <p>2026 has been its biggest year: 30 wells plugged in a single year at the Deep Fork National Wildlife Refuge in Oklahoma, a new field office in Okmulgee, a marine division for underwater and nearshore wells, field data in a peer-reviewed study of orphan-well methane, and new corporate backing.</p>
+            <p><strong>Why we follow it:</strong> measurement decides which wells get plugged first and proves the plug worked. That is the job our <a href="https://wellmonitor.sigilint.com/">well monitor</a> is built to make cheap and continuous — commodity methane, H₂S and VOC sensors on a well before it's plugged, and on the same well afterwards.</p>
+            <div class="links">
+              <a href="https://welldonefoundation.org/category/press-release/" class="btn">Well Done press releases <span class="arrow">→</span></a>
+              <a href="https://welldonefoundation.org/texas-orphaned-wells/" class="btn ghost">Texas program</a>
+            </div>
+          </div>
+          <div>
+            <ul class="roundup">
+              <li>
+                <span class="when">Jul 14, 2026</span>
+                <p>Teaming agreement with Zefiro Methane to expand plugging nationwide, starting with the Deep Fork project; Zefiro's Plants &amp; Goodwin does the plugging work.</p>
+                <a class="src" href="https://www.accessnewswire.com/newsroom/en/oil-gas-and-energy/well-done-foundation-and-zefiro-methane-corp.-announce-teaming-agreement-to-expa-1190385">ACCESS Newswire →</a>
+              </li>
+              <li>
+                <span class="when">May 20, 2026</span>
+                <p>Oracle funds the assessment of 10 orphaned wells in New Mexico and the plugging of the two highest emitters, plus training for two local measurement specialists.</p>
+                <a class="src" href="https://www.oracle.com/news/announcement/oracle-teams-up-with-well-done-foundation-to-plug-abandoned-oil-and-gas-wells-in-new-mexico-2026-05-20">Oracle →</a>
+              </li>
+              <li>
+                <span class="when">Apr 21, 2026</span>
+                <p>Six years since the first Earth Day plugging: 117+ wells, 15 states, and 30 wells in one year at Deep Fork.</p>
+                <a class="src" href="https://www.accessnewswire.com/newsroom/en/oil-gas-and-energy/well-done-foundation-marks-six-years-since-first-earth-day-well-plugging-highlig-1159117">ACCESS Newswire →</a>
+              </li>
+            </ul>
+            <div class="note">// Sigilint is not affiliated with the Well Done Foundation.</div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <script src="shared.js"></script>
+</body>
+</html>

@@ -97,7 +97,8 @@ a:hover { color: var(--green); }
   font-size: 17px;
   letter-spacing: 0.08em;
 }
-.nav .brand .hex {
+.nav .brand .hex,
+footer .hex {
   width: 22px; height: 22px;
 }
 .nav ul {
