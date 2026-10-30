@@ -8,6 +8,17 @@
   to = "/hacks.html"
   status = 301
 
+# Hackathons page was folded into the hacks page
+[[redirects]]
+  from = "/hackathons"
+  to = "/hacks#hackathons"
+  status = 301
+
+[[redirects]]
+  from = "/hackathons.html"
+  to = "/hacks#hackathons"
+  status = 301
+
 [[redirects]]
   from = "/well-monitor-demo/*"
   to = "https://wellmonitor.sigilint.com/:splat"

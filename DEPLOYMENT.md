@@ -39,7 +39,7 @@ Each repo's `netlify.toml` holds its build settings, so the Netlify dashboard se
   - The design source files in the repo (`Sigilint website.zip`, `Sigilint - design`) and this file return 404, so they are not served. The rules use URL-encoded paths (`%20`); literal spaces don't match.
 - **Pretty URLs** are on, so `/hacks` serves `hacks.html`. `shared.js` highlights the current nav item for both forms of URL.
 - **Contact form:** `contact.html` posts to Netlify Forms as the form named `contact`. Form detection is enabled on the site, and each submission is emailed to aarone@one-shore.com through a `submission_created` notification. Submissions are also listed in Netlify under Forms. The page only shows success when Netlify accepts the post; otherwise it shows an error with the contact address.
-- **Demo links:** the list at the top of `hacks.html` (`#demos`), the POC-03 buttons on the same page, and `hackathons.html` all link to the subdomains above. If a URL changes, update all three and the `/well-monitor-demo/` redirect.
+- **Demo links:** the list at the top of `hacks.html` (`#demos`), the POC-03 buttons and the Hackathons section (`#hackathons`) on the same page, and the homepage hero carousel all link to the subdomains above. If a URL changes, update all of them and the `/well-monitor-demo/` redirect.
 
 ## Common tasks
 
