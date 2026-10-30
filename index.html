@@ -11,29 +11,129 @@
 <body>
 
   <main>
-    <!-- ============ HERO (variant-controlled) ============ -->
-    <section id="hero-mount">
-        <section class="hero variant-a">
-          <div class="container">
-            <div class="kicker-row">
-              <span class="tag live">● STEALTH / PRE-SEED</span>
-              <span class="tag">FORT WORTH, TX · US / GCC</span>
-              <span class="tag">EST. 2026</span>
+    <!-- ============ HERO CAROUSEL ============
+         Photos are placeholders: swap each .hc-photo / .hc-thumb-img div for an
+         <img src="images/..." alt="..."> (copy: sigilint-content/Home/home.md). -->
+    <section class="hero-carousel" id="hero" aria-roledescription="carousel" aria-label="What Sigilint builds">
+      <div class="hc-slides">
+
+        <article class="hc-slide is-active" id="hc-slide-1" role="tabpanel" aria-roledescription="slide" aria-labelledby="hc-tab-1">
+          <div class="container hc-grid">
+            <div class="hc-copy">
+              <div class="hc-eyebrow"><span class="num">01</span>Industrial sensors &amp; monitoring</div>
+              <h1 class="h-display">Built for the world's <em>toughest environments</em></h1>
+              <p class="sub">Sigilint is building a resilient mesh for moving alerts &amp; data from sensors, cameras, drones, and human sources — into the control room, for real-time decision making and industrial operational intelligence.</p>
+              <div class="actions">
+                <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
+                <a href="hacks.html#demos" class="btn ghost">Live demos</a>
+              </div>
             </div>
-            <h1 class="h-display">Industrial sensing, <em>at the speed of signal.</em></h1>
-            <p class="sub">Sigilint builds a low-latency, high-reliability mesh for moving alerts from sensors, cameras, drones, and humans — into the control room, in under ten milliseconds. Pipelines, refineries, ports, desalination plants, perimeters.</p>
-            <div class="actions">
-              <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
-              <a href="hacks.html" class="btn ghost">Hacks</a>
-            </div>
-            <div class="meta-strip">
-              <div class="item"><div class="k">Bus</div><div class="v">DDS / Mesh</div></div>
-              <div class="item"><div class="k">Latency (P95)</div><div class="v">&lt; 9 ms</div></div>
-              <div class="item"><div class="k">Hardware</div><div class="v">COTS · Pi</div></div>
-              <div class="item"><div class="k">First vertical</div><div class="v">Oil &amp; Gas</div></div>
-            </div>
+            <figure class="hc-media">
+              <div class="hc-photo placeholder"><span>Photo // Oil well derrick at sunset</span></div>
+              <a class="hc-thumb" href="https://wellsite.sigilint.com/">
+                <div class="hc-thumb-img placeholder"><span>Well site monitor</span></div>
+                <div class="hc-thumb-cap"><span>Live demo</span>Well Site Monitor →</div>
+              </a>
+            </figure>
           </div>
-        </section></section>
+        </article>
+
+        <article class="hc-slide" id="hc-slide-2" role="tabpanel" aria-roledescription="slide" aria-labelledby="hc-tab-2">
+          <div class="container hc-grid">
+            <div class="hc-copy">
+              <div class="hc-eyebrow"><span class="num">02</span>Safety &amp; sustainability</div>
+              <h2 class="h-display">Texas Oil &amp; Gas <em>Well Monitor</em></h2>
+              <p class="sub">Sigilint is using commodity hardware to build an affordable solution for monitoring oil &amp; gas wells in Texas. We use sensors for detecting hydrogen sulfide, methane, and other VOC gases — combined with crowd-sourced data collection and public information online.</p>
+              <div class="actions">
+                <a href="https://wellmonitor.sigilint.com/" class="btn">Well monitor demo <span class="arrow">→</span></a>
+                <a href="hacks.html#poc-methane" class="btn ghost">Field report</a>
+              </div>
+            </div>
+            <figure class="hc-media">
+              <div class="hc-photo placeholder"><span>Photo // Abandoned oil well</span></div>
+              <a class="hc-thumb" href="https://wells.sigilint.com/">
+                <div class="hc-thumb-img placeholder"><span>Tarrant County well map</span></div>
+                <div class="hc-thumb-cap"><span>Public RRC data</span>Tarrant Well Explorer →</div>
+              </a>
+            </figure>
+          </div>
+        </article>
+
+        <article class="hc-slide" id="hc-slide-3" role="tabpanel" aria-roledescription="slide" aria-labelledby="hc-tab-3">
+          <div class="container hc-grid">
+            <div class="hc-copy">
+              <div class="hc-eyebrow"><span class="num">03</span>Resilient mesh network</div>
+              <h2 class="h-display">Every Sensor, Every Millisecond. <em>In one place.</em></h2>
+              <p class="sub">Sigil Layer is a self-healing DDS mesh. Nodes find each other, route around a cut link or a dead gateway, and keep publishing — so readings and alerts reach every subscriber in milliseconds, connected to the cloud or not.</p>
+              <div class="actions">
+                <a href="technology.html" class="btn">How the mesh works <span class="arrow">→</span></a>
+              </div>
+            </div>
+            <figure class="hc-media">
+              <div class="hc-photo placeholder"><span>Photo // Oil refinery</span></div>
+              <a class="hc-thumb" href="technology.html">
+                <div class="hc-thumb-img hc-diagram">
+                  <svg viewBox="0 0 240 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Sigil Nodes publish over Sigil Layer to Sigil Watch">
+                    <g font-family="JetBrains Mono" font-size="7" letter-spacing="0.5">
+                      <g fill="#fff" stroke="#0a0a0a">
+                        <rect x="10" y="22" width="52" height="22"/><rect x="10" y="64" width="52" height="22"/><rect x="10" y="106" width="52" height="22"/>
+                      </g>
+                      <g fill="#0a0a0a" text-anchor="middle">
+                        <text x="36" y="36">NODE·CH4</text><text x="36" y="78">NODE·CAM</text><text x="36" y="120">NODE·RFID</text>
+                      </g>
+                      <g stroke="var(--green)" stroke-dasharray="3 3" fill="none">
+                        <line x1="62" y1="33" x2="98" y2="62"/><line x1="62" y1="75" x2="98" y2="75"/><line x1="62" y1="117" x2="98" y2="88"/>
+                        <line x1="152" y1="75" x2="178" y2="75"/>
+                      </g>
+                      <polygon points="125,48 152,61 152,89 125,102 98,89 98,61" fill="var(--green-soft)" stroke="var(--green)"/>
+                      <text x="125" y="73" text-anchor="middle" fill="var(--green)" font-weight="600">SIGIL</text>
+                      <text x="125" y="83" text-anchor="middle" fill="#555">LAYER</text>
+                      <rect x="178" y="58" width="54" height="34" fill="#0a0a0a"/>
+                      <text x="205" y="73" text-anchor="middle" fill="#fffcfa">SIGIL</text>
+                      <text x="205" y="83" text-anchor="middle" fill="#fffcfa">WATCH</text>
+                      <text x="10" y="12" fill="#8a8a85">FIG 1.0 / MESH</text>
+                    </g>
+                  </svg>
+                </div>
+                <div class="hc-thumb-cap"><span>Architecture</span>Node → Layer → Watch →</div>
+              </a>
+            </figure>
+          </div>
+        </article>
+
+        <article class="hc-slide" id="hc-slide-4" role="tabpanel" aria-roledescription="slide" aria-labelledby="hc-tab-4">
+          <div class="container hc-grid">
+            <div class="hc-copy">
+              <div class="hc-eyebrow"><span class="num">04</span>AI-driven industrial intelligence</div>
+              <h2 class="h-display">Every Sensor, Every Millisecond. <em>In one center.</em></h2>
+              <p class="sub">Sigil Watch brings live sensor data, camera feeds, and alerts from every site onto one screen. AI flags what's abnormal, correlates it across sources, and recommends the next action — with an operator in the loop on every call.</p>
+              <div class="actions">
+                <a href="https://platform.sigilint.com/" class="btn">Platform monitor demo <span class="arrow">→</span></a>
+                <a href="technology.html" class="btn ghost">Sigil Watch</a>
+              </div>
+            </div>
+            <figure class="hc-media">
+              <div class="hc-photo placeholder"><span>Photo // Offshore oil platform</span></div>
+              <a class="hc-thumb" href="https://platform.sigilint.com/">
+                <div class="hc-thumb-img placeholder"><span>Platform monitor</span></div>
+                <div class="hc-thumb-cap"><span>Live demo</span>Offshore Platform Monitor →</div>
+              </a>
+            </figure>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="container hc-controls">
+        <div class="hc-tabs" role="tablist" aria-label="Choose a focus area">
+          <button class="hc-tab" id="hc-tab-1" role="tab" aria-selected="true" aria-controls="hc-slide-1"><span class="num">01</span>Industrial sensors<span class="bar"></span></button>
+          <button class="hc-tab" id="hc-tab-2" role="tab" aria-selected="false" aria-controls="hc-slide-2" tabindex="-1"><span class="num">02</span>Texas well monitor<span class="bar"></span></button>
+          <button class="hc-tab" id="hc-tab-3" role="tab" aria-selected="false" aria-controls="hc-slide-3" tabindex="-1"><span class="num">03</span>Mesh network<span class="bar"></span></button>
+          <button class="hc-tab" id="hc-tab-4" role="tab" aria-selected="false" aria-controls="hc-slide-4" tabindex="-1"><span class="num">04</span>Control center<span class="bar"></span></button>
+        </div>
+        <button class="hc-toggle" type="button" aria-label="Pause slideshow">Pause</button>
+      </div>
+    </section>
 
     <!-- ============ PROBLEM ============ -->
     <section class="problem">
@@ -194,14 +294,6 @@
   <div class="tweaks-panel open" id="tweaks">
     <h4>// Tweaks</h4>
     <div class="row">
-      <label>Hero variant</label>
-      <div class="opts" data-key="hero">
-        <button data-val="a" class="active">A — Statement</button>
-        <button data-val="b">B — Terminal</button>
-        <button data-val="c">C — Split</button>
-      </div>
-    </div>
-    <div class="row">
       <label>Accent</label>
       <div class="opts" data-key="accent">
         <button data-val="green" class="active">Green</button>
@@ -221,135 +313,14 @@
   <script>
     // ============ Defaults block ============
     const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-      "hero": "a",
       "accent": "green",
       "strip": "on"
     }/*EDITMODE-END*/;
 
     let state = { ...TWEAK_DEFAULTS };
 
-    // ============ Hero variant renderers ============
-    const heros = {
-      a: () => `
-        <section class="hero variant-a">
-          <div class="container">
-            <div class="kicker-row">
-              <span class="tag live">● STEALTH / PRE-SEED</span>
-              <span class="tag">FORT WORTH, TX · US / GCC</span>
-              <span class="tag">EST. 2026</span>
-            </div>
-            <h1 class="h-display">Industrial sensing, <em>at the speed of signal.</em></h1>
-            <p class="sub">Sigilint builds a low-latency, high-reliability mesh for moving alerts from sensors, cameras, drones, and humans — into the control room, in under ten milliseconds. Pipelines, refineries, ports, desalination plants, perimeters.</p>
-            <div class="actions">
-              <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
-              <a href="hacks.html" class="btn ghost">Hacks</a>
-            </div>
-            <div class="meta-strip">
-              <div class="item"><div class="k">Bus</div><div class="v">DDS / Mesh</div></div>
-              <div class="item"><div class="k">Latency (P95)</div><div class="v">&lt; 9 ms</div></div>
-              <div class="item"><div class="k">Hardware</div><div class="v">COTS · Pi</div></div>
-              <div class="item"><div class="k">First vertical</div><div class="v">Oil &amp; Gas</div></div>
-            </div>
-          </div>
-        </section>`,
-      b: () => `
-        <section class="hero variant-b">
-          <div class="container">
-            <div class="kicker-row">
-              <span class="tag live">● NODE.A1 ONLINE</span>
-              <span class="tag">SIGIL-SEC v0.7.2</span>
-              <span class="tag">MESH PEERS: 1,247</span>
-            </div>
-            <h1 class="h-display">Every sensor. <em>Every second.</em><br/>Into one picture.</h1>
-            <p class="sub">Sigilint is a stealth-stage company building the network layer and control center for industrial sensing — over DDS, over hardened mesh, over commodity hardware.</p>
-            <div class="actions">
-              <a href="technology.html" class="btn">&gt; read the stack</a>
-              <a href="hacks.html" class="btn">&gt; hacks</a>
-            </div>
-            <pre class="ascii">  ┌─ sensor.03 ──┐      ┌─ sigil.bus ──┐      ┌─ control ─┐
-  │  RFID GATE   │─────▶│  DDS · MESH  │─────▶│   watch   │
-  └──────────────┘      │   AES-256    │      └───────────┘
-  ┌─ sensor.04 ──┐      │   9ms P95    │            ▲
-  │  CH4 / H2S   │─────▶│              │◀───────────┘
-  └──────────────┘      └──────────────┘        operator</pre>
-            <div class="meta-strip">
-              <div class="item"><div class="k">&gt; bus</div><div class="v">DDS / Mesh</div></div>
-              <div class="item"><div class="k">&gt; latency</div><div class="v">&lt; 9 ms</div></div>
-              <div class="item"><div class="k">&gt; hw</div><div class="v">COTS · Pi</div></div>
-              <div class="item"><div class="k">&gt; status</div><div class="v">STEALTH</div></div>
-            </div>
-          </div>
-        </section>`,
-      c: () => `
-        <section class="hero variant-c">
-          <div class="left">
-            <div class="kicker-row">
-              <span class="tag live">● STEALTH / PRE-SEED</span>
-              <span class="tag">HIRING</span>
-            </div>
-            <h1 class="h-display">A sensing fabric for <em>hard infrastructure.</em></h1>
-            <p class="sub">Low-latency DDS mesh. Native control center. Commodity sensor nodes. Built for refineries, pipelines, ports, and desalination plants — starting in the Gulf.</p>
-            <div class="actions">
-              <a href="technology.html" class="btn">See the stack <span class="arrow">→</span></a>
-              <a href="contact.html" class="btn ghost">Request brief</a>
-            </div>
-            <div class="meta-strip">
-              <div class="item"><div class="k">Bus</div><div class="v">DDS</div></div>
-              <div class="item"><div class="k">Latency</div><div class="v">&lt;9ms</div></div>
-              <div class="item"><div class="k">HW</div><div class="v">Pi</div></div>
-              <div class="item"><div class="k">First ops</div><div class="v">KSA</div></div>
-            </div>
-          </div>
-          <div class="right">
-            <!-- schematic preview illustration -->
-            <svg viewBox="0 0 400 400" width="100%" style="max-width:400px;" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <pattern id="grid-c" width="20" height="20" patternUnits="userSpaceOnUse">
-                  <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#c9c6bc" stroke-width="0.5"/>
-                </pattern>
-              </defs>
-              <rect width="400" height="400" fill="url(#grid-c)"/>
-              <!-- central hub -->
-              <polygon points="200,170 230,185 230,215 200,230 170,215 170,185" fill="none" stroke="#0a0a0a" stroke-width="1.5"/>
-              <polygon points="200,180 222,190 222,210 200,220 178,210 178,190" fill="oklch(0.48 0.08 145 / 0.15)" stroke="oklch(0.48 0.08 145)" stroke-width="1"/>
-              <text x="200" y="203" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="oklch(0.48 0.08 145)" font-weight="500">SIGIL</text>
-              <text x="200" y="213" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#555">BUS</text>
-
-              <!-- nodes -->
-              <g stroke="#0a0a0a" stroke-width="1" fill="#fafaf7" font-family="JetBrains Mono" font-size="8">
-                <circle cx="80" cy="80" r="14"/><text x="80" y="83" text-anchor="middle" stroke="none" fill="#0a0a0a">CAM</text>
-                <circle cx="320" cy="80" r="14"/><text x="320" y="83" text-anchor="middle" stroke="none" fill="#0a0a0a">DRN</text>
-                <circle cx="80" cy="320" r="14"/><text x="80" y="323" text-anchor="middle" stroke="none" fill="#0a0a0a">RFID</text>
-                <circle cx="320" cy="320" r="14"/><text x="320" y="323" text-anchor="middle" stroke="none" fill="#0a0a0a">CH4</text>
-                <circle cx="60" cy="200" r="12"/><text x="60" y="203" text-anchor="middle" stroke="none" fill="#0a0a0a">VIB</text>
-                <circle cx="340" cy="200" r="12"/><text x="340" y="203" text-anchor="middle" stroke="none" fill="#0a0a0a">SCD</text>
-              </g>
-
-              <!-- dashed links -->
-              <g stroke="oklch(0.48 0.08 145)" stroke-width="1" fill="none" stroke-dasharray="3 3">
-                <line x1="94" y1="94" x2="178" y2="190"/>
-                <line x1="306" y1="94" x2="222" y2="190"/>
-                <line x1="94" y1="306" x2="178" y2="210"/>
-                <line x1="306" y1="306" x2="222" y2="210"/>
-                <line x1="72" y1="200" x2="170" y2="200"/>
-                <line x1="328" y1="200" x2="230" y2="200"/>
-              </g>
-
-              <!-- corner labels -->
-              <text x="12" y="16" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1">FIG 1.0 / MESH</text>
-              <text x="388" y="16" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1" text-anchor="end">REV 04.26</text>
-              <text x="12" y="392" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1">6 NODES · 1 BUS</text>
-              <text x="388" y="392" font-family="JetBrains Mono" font-size="8" fill="#8a8a85" letter-spacing="1" text-anchor="end">SIGILINT.IO</text>
-            </svg>
-          </div>
-        </section>`
-    };
-
     // ============ Apply state ============
     function applyState() {
-      const mount = document.getElementById('hero-mount');
-      mount.innerHTML = heros[state.hero]();
-
       // accent
       const root = document.documentElement;
       if (state.accent === 'orange') {
@@ -397,6 +368,77 @@
     window.parent.postMessage({ type: '__edit_mode_available' }, '*');
   </script>
 <script>applyState();</script>
+
+  <script>
+    // ============ Hero carousel ============
+    (function () {
+      const root = document.getElementById('hero');
+      const viewport = root.querySelector('.hc-slides');
+      const slides = [...root.querySelectorAll('.hc-slide')];
+      const tabs = [...root.querySelectorAll('.hc-tab')];
+      const toggle = root.querySelector('.hc-toggle');
+      let current = 0;
+
+      function show(i, focusTab) {
+        current = (i + slides.length) % slides.length;
+        slides.forEach((s, n) => {
+          s.classList.toggle('is-active', n === current);
+          s.inert = n !== current;
+        });
+        tabs.forEach((t, n) => {
+          t.setAttribute('aria-selected', n === current);
+          t.tabIndex = n === current ? 0 : -1;
+        });
+        if (focusTab) tabs[current].focus();
+      }
+
+      function setPlaying(on) {
+        root.classList.toggle('is-playing', on);
+        toggle.textContent = on ? 'Pause' : 'Play';
+        toggle.setAttribute('aria-label', on ? 'Pause slideshow' : 'Play slideshow');
+        viewport.setAttribute('aria-live', on ? 'off' : 'polite');
+      }
+
+      // The active tab's progress bar is the timer: when its CSS animation ends, advance.
+      tabs.forEach((t, n) => {
+        t.addEventListener('click', () => show(n));
+        t.querySelector('.bar').addEventListener('animationend', () => show(current + 1));
+      });
+
+      root.querySelector('.hc-tabs').addEventListener('keydown', (e) => {
+        const next = { ArrowRight: current + 1, ArrowLeft: current - 1, Home: 0, End: slides.length - 1 }[e.key];
+        if (next === undefined) return;
+        e.preventDefault();
+        show(next, true);
+      });
+
+      toggle.addEventListener('click', () => setPlaying(!root.classList.contains('is-playing')));
+
+      // Hold the timer while the visitor is pointing at or tabbed into the hero.
+      root.addEventListener('mouseenter', () => root.classList.add('is-held'));
+      root.addEventListener('mouseleave', () => root.classList.remove('is-held'));
+      root.addEventListener('focusin', () => root.classList.add('is-held'));
+      root.addEventListener('focusout', (e) => {
+        if (!root.contains(e.relatedTarget)) root.classList.remove('is-held');
+      });
+
+      let touchX = null, touchY = null;
+      viewport.addEventListener('touchstart', (e) => {
+        touchX = e.touches[0].clientX;
+        touchY = e.touches[0].clientY;
+      }, { passive: true });
+      viewport.addEventListener('touchend', (e) => {
+        if (touchX === null) return;
+        const dx = e.changedTouches[0].clientX - touchX;
+        const dy = e.changedTouches[0].clientY - touchY;
+        if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(current + (dx < 0 ? 1 : -1));
+        touchX = null;
+      });
+
+      show(0);
+      setPlaying(!matchMedia('(prefers-reduced-motion: reduce)').matches);
+    })();
+  </script>
 
 
   <script src="shared.js"></script>
