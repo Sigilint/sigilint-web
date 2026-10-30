@@ -94,9 +94,6 @@
       box-shadow: 8px 8px 0 var(--green-soft);
       transition: transform 0.15s, box-shadow 0.15s;
     }
-    /* Slide 1's subject sits bottom-left, so its card moves to the other corner. */
-    .hc-media.thumb-right { margin: 0 32px 32px 0; }
-    .hc-media.thumb-right .hc-thumb { left: auto; right: -32px; }
     .hc-thumb:hover {
       color: inherit;
       transform: translate(-2px, -2px);
@@ -215,8 +212,6 @@
       .hc-media { margin: 0 0 24px 16px; }
       .hc-photo { aspect-ratio: 16 / 10; }
       .hc-thumb { left: -16px; bottom: -24px; width: 52%; }
-      .hc-media.thumb-right { margin: 0 16px 24px 0; }
-      .hc-media.thumb-right .hc-thumb { left: auto; right: -16px; }
       .hc-controls { margin-top: 48px; gap: 12px; }
       .hc-tabs { grid-template-columns: repeat(4, 1fr); gap: 8px; }
       .hc-tab { font-size: 0; padding-bottom: 16px; }
