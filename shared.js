@@ -60,7 +60,6 @@
           <ul>
             <li><a href="careers.html">Careers</a></li>
             <li><a href="capital.html">Capital</a></li>
-            <li><a href="hacks.html#hackathons">Hackathons</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
         </div>
