@@ -83,7 +83,6 @@
       </div>
       <div class="coda">
         <div>© 2026 Sigilint, Inc. — All rights reserved.</div>
-        <div>ITAR / EAR sensitive. Authorized contacts only.</div>
       </div>
     </footer>
   `;
