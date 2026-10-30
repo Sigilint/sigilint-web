@@ -11,7 +11,6 @@
     { href: 'news.html', label: 'News' },
     { href: 'careers.html', label: 'Careers' },
     { href: 'capital.html', label: 'Capital' },
-    { href: 'contact.html', label: 'Contact' },
   ];
 
   const hex = `<svg class="hex" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
