@@ -2,7 +2,7 @@
 
     /* ------ Hero carousel ------ */
     .hero-carousel {
-      --hc-interval: 8s;
+      --hc-interval: 10s;
       position: relative;
       padding: 72px 0 0;
       overflow: hidden;
